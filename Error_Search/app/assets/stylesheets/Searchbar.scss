@@ -1,0 +1,48 @@
+//@use postcss-color-function;
+//@use postcss-nested;
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,700,900');
+
+/* Base styling */
+
+body {
+  margin: 0 auto;
+  font-family: 'Raleway', sans-serif;
+}
+
+.search {
+  &__container {
+    padding-top: 64px;
+  }
+
+  &__input {
+    width: 90%;
+    padding: 12px 24px;
+
+    background-color: transparent;
+    font-size: 14px;
+    line-height: 18px;
+
+    color: #575756;
+    background-color: transparent;
+
+    background-repeat: no-repeat;
+    background-size: 18px 18px;
+    background-position: 95% center;
+    border-radius: 50px;
+    border: 1px solid #575756;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+
+    &::placeholder {
+      //color: color(#575756 a(0.8));
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+  }
+}
+
+.LanguagesCheckbox{
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-top: 10px;
+}

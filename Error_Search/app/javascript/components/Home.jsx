@@ -1,5 +1,5 @@
 import React, {useState} from "react"
-import SearchBar from "./SearchBar";
+import SearchBar from "./Search/SearchBar";
 class Home extends React.Component {
 
     constructor(props) {
@@ -9,7 +9,7 @@ class Home extends React.Component {
     render() {
         return(
             <>
-                <SearchBar/>
+                <h1>Welcome</h1>
             </>
         )
     }

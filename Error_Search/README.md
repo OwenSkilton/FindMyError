@@ -1,24 +1,28 @@
-# README
+# To Do:
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Languages checkboxes that renders a framework option
 
-Things you may want to cover:
+* rails navigation when a search is performed to go to a new page 
 
-* Ruby version
+* Home page that enables routing
 
-* System dependencies
+* Login page 
 
-* Configuration
+* Api selection set up
 
-* Database creation
+* results screen with the left-hand side container selection (Amazon) and right hand side results screen
 
-* Database initialization
+* Accounts?
 
-* How to run the test suite
+* CSS!!!!
 
-* Services (job queues, cache servers, search engines, etc.)
+* Cucumber testing
 
-* Deployment instructions
+* Upvote for posts?
 
-* ...
+* results from 2 different websites 
+
+* Favourited results?? 
+
+* CHECK SCREENSHOT ON DESKTOP FOR SETTING UP REACT ROUTES???
+    - https://www.digitalocean.com/community/tutorials/how-to-set-up-a-ruby-on-rails-project-with-a-react-frontend
