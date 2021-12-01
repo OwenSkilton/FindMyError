@@ -4,7 +4,7 @@ const MainResults = () => {
 
     return (
         <>
-            <h1>Yeet</h1>
+            <h1>RightSide</h1>
         </>
     );
 };
