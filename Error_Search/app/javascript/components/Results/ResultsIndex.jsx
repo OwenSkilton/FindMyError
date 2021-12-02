@@ -7,6 +7,8 @@ const ResultsIndex = () => {
     const [search, setSearch] = useState(useLocation().state.search)
     const [languages, setLanguages] = useState(useLocation().state.languages)
     const [results, setResults] = useState([])
+    const [loading, setLoading] = useState(true)
+
 
     useEffect(()=>{
         async function fetchStackOverflowAPI() {
@@ -15,19 +17,29 @@ const ResultsIndex = () => {
             const dataJson = await data.json();
             setResults(dataJson)
         }
-        fetchStackOverflowAPI();
+        fetchStackOverflowAPI().finally(()=>setLoading(false));
     }, [search])
 
-    const consoleLogAll = () =>{
-        console.log(languages)
-        console.log(results)
+    const renderLoading = () => {
+        return(<h2>LOADING...</h2>)
+    }
+
+    const renderResults = () =>{
+        const resultItems = results.items
+        return(
+            <div className="container">
+                <h2>Results</h2>
+                {resultItems.map((result)=>{
+                    return <RightResults key={result.question_id} {...result}/>
+                })}
+            </div>
+        )
     }
 
     return (
         <>
-            <button onClick={()=>consoleLogAll()}>Click me!</button>
             <ResultsPageSearchCriteria/>
-            <RightResults/>
+            { loading ? renderLoading() : renderResults()}
         </>
     );
 };

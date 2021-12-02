@@ -1,5 +1,4 @@
 import React, {useState} from "react"
-import SearchBar from "./Search/SearchBar";
 class Home extends React.Component {
 
     constructor(props) {

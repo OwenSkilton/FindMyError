@@ -11,7 +11,7 @@ const Navbar = () => {
                         <Link to={"/"} className="menu__link r-link text-underlined">ErrorSearch</Link>
                     </li>
                     <li className="menu__group">
-                        <Link to={"/Search"} className="menu__link r-link text-underlined">Search</Link>
+                        <Link to={"/search/Search"} className="menu__link r-link text-underlined">Search</Link>
                     </li>
                     <li className="menu__group">
                         <Link to={"/about/About"} className="menu__link r-link text-underlined">About</Link>

@@ -17,7 +17,7 @@ const NavbarRouting = () => {
                 <Navbar/>
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path="/Search" element={<SearchBar />} />
+                    <Route path="/search/Search" element={<SearchBar />} />
                     <Route path="/about/About" element={<About />} />
                     <Route path="/results/ResultsPage" element={<ResultsIndex />} />
                 </Routes>

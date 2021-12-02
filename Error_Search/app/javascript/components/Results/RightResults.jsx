@@ -1,10 +1,10 @@
 import React from 'react';
 
-const MainResults = () => {
+const MainResults = (result) => {
 
     return (
         <>
-            <h1>RightSide</h1>
+            <h1>{result.question_id}</h1>
         </>
     );
 };
