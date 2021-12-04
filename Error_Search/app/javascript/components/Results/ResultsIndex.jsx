@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import RightResults from "./RightResults";
+import MainResults from "./MainResults";
 import ResultsPageSearchCriteria from "./ResultsPageSearchCriteria";
 import {useLocation} from "react-router-dom";
 
@@ -12,13 +12,14 @@ const ResultsIndex = () => {
 
     useEffect(()=>{
         async function fetchStackOverflowAPI() {
-            const url = `https://api.stackexchange.com/2.3/search?order=desc&sort=activity&intitle=${search}&site=stackoverflow`
+            const url = `https://api.stackexchange.com/2.3/search?order=desc&sort=votes&intitle=${search}&site=stackoverflow`
+             // Tags api : https://api.stackexchange.com/2.3/search?order=desc&sort=activity&tagged=reactjs&intitle=useEffect&site=stackoverflow
             const data = await fetch(url)
             const dataJson = await data.json();
             setResults(dataJson)
         }
         fetchStackOverflowAPI().finally(()=>setLoading(false));
-    }, [search])
+    }, [])
 
     const renderLoading = () => {
         return(<h2>LOADING...</h2>)
@@ -27,10 +28,10 @@ const ResultsIndex = () => {
     const renderResults = () =>{
         const resultItems = results.items
         return(
-            <div className="container">
+            <div className="results-container">
                 <h2>Results</h2>
                 {resultItems.map((result)=>{
-                    return <RightResults key={result.question_id} {...result}/>
+                    return <MainResults key={result.question_id} {...result}/>
                 })}
             </div>
         )
@@ -38,7 +39,7 @@ const ResultsIndex = () => {
 
     return (
         <>
-            <ResultsPageSearchCriteria/>
+            {/*<ResultsPageSearchCriteria/>*/}
             { loading ? renderLoading() : renderResults()}
         </>
     );

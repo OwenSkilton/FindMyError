@@ -15,3 +15,17 @@
  */
 
 @import "bulma";
+
+:root {
+  --max-width: 1170px;
+}
+body{
+  font-family: sans-serif;
+  font-size: 15px;
+}
+
+.welcome-page{
+  margin: 5rem;
+  max-width: var(--max-width);
+  text-align: center;
+}

@@ -1,3 +1,52 @@
 // Place all the styles related to the results controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.results-container {
+  width: 90vw;
+  max-width: var(--max-width);
+  margin: 1rem auto;
+  box-sizing: border-box;
+}
+.results {
+  margin: 1rem auto 0;
+  padding: 1rem;
+  border: 2px solid black;
+  box-sizing: inherit;
+  display: flex;
+}
+i:after, i:before{
+  content: '';
+  display: block;
+  height: 10px;
+  position: relative;
+  box-sizing: inherit;
+}
+.results-content{
+  padding-left: 1rem;
+  display: inline;
+  box-sizing: inherit;
+}
+.tags{
+  margin-top: 1rem;
+  display: flex;
+}
+.inner-tags{
+  padding: 8px;
+  color: #458338;
+  opacity: 70%;
+  background-color: #9de58e;
+  margin: 2px;
+}
+.hyperlink-for-question{
+  color: #0074CC;
+  line-height: 1.3;
+  margin-bottom: 1.2em;
+  font-weight:normal;
+  text-decoration: none;
+}
+
+.loading{
+  margin: 5rem;
+  width: 150vw;
+  max-width: var(--max-width);
+}
