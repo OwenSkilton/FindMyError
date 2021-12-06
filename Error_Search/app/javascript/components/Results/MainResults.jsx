@@ -14,7 +14,7 @@ const MainResults = (result) => {
                 <div className={"results-content"}>
                     <h3>
                         <a href={result.link} className={"hyperlink-for-question"}>
-                            {truncate(result.title.replace(/&#39;/g,'\''), 80, "...")}
+                            {truncate(result.title.replace(/&#39;/g,'\'').replace(/&quot;/g,'"'), 80, "...")}
                         </a>
                     </h3>
                     <p>
