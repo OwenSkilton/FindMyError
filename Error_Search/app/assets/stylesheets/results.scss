@@ -1,12 +1,40 @@
 // Place all the styles related to the results controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-.results-container {
-  width: 90vw;
-  max-width: var(--max-width);
-  margin: 1rem auto;
+
+
+.ResultsPlusSearchCriteriaArea{
+  margin: 0.5rem;
   box-sizing: border-box;
+  display: inline-flex;
+
 }
+
+.SearchRefinementArea{
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  /*margin: 1rem;*/
+  z-index: 1;
+  border-right: black solid 2px;
+  display: inline-block;
+}
+
+.SearchCriteria{
+  margin: 1rem;
+  position: relative;
+  text-align: center;
+  float: left;
+  overflow-x: hidden;
+}
+
+.results-container {
+  width: 100%;
+  max-width: var(--max-width);
+  box-sizing: border-box;
+  margin: 1rem auto 1rem 260px;
+}
+
 .results {
   margin: 1rem auto 0;
   padding: 1rem;
@@ -49,4 +77,18 @@ i:after, i:before{
   margin: 5rem;
   width: 150vw;
   max-width: var(--max-width);
+}
+
+.SearchResultsButtons{
+  box-sizing: inherit;
+  margin: 1rem;
+  text-align: right;
+}
+
+.MainSearchResults{
+  display: block;
+}
+
+.FilterButton{
+  margin: 0.2rem;
 }

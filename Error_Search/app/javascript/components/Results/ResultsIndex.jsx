@@ -25,15 +25,39 @@ const ResultsIndex = () => {
         return(<h2>LOADING...</h2>)
     }
 
+
+    const numberOfResults = () => {
+        console.log(results)
+        if (results.items.length >= 30) {
+            return ("There are more than 30 results returned, you might want to refine your search")
+        } else {
+            return (results.items.length + " results: ")
+        }
+    }
+
     const renderResults = () =>{
         const resultItems = results.items
         return(
-            <div className="results-container">
-                <h2>Results</h2>
-                {resultItems.map((result)=>{
-                    return <MainResults key={result.question_id} {...result}/>
-                })}
-            </div>
+            <>
+                <div className={"ResultsPlusSearchCriteriaArea"}>
+                    <div className={"SearchRefinementArea"}>
+                        <ResultsPageSearchCriteria/>
+                    </div>
+                    <div className="results-container">
+                        <h2>{numberOfResults()}</h2>
+                        <div className={"SearchResultsButtons"}>
+                            <button className={"FilterButton"}>Most popular</button>
+                            <button className={"FilterButton"}>Relevance</button>
+                            <button className={"FilterButton"}>Random</button>
+                        </div>
+                        <div className={"MainSearchResults"}>
+                            {resultItems.map((result)=>{
+                                return <MainResults key={result.question_id} {...result}/>
+                            })}
+                        </div>
+                    </div>
+                </div>
+            </>
         )
     }
 
