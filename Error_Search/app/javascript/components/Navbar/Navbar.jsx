@@ -15,6 +15,8 @@ const Navbar = () => {
                     </li>
                     <li className="menu__group">
                         <Link to={"/about/About"} className="menu__link r-link text-underlined">About</Link>
+                    </li><li className="menu__group">
+                        <Link to={"/profile/Profile"} className="menu__link r-link text-underlined">Account</Link>
                     </li>
                 </ul>
             </nav>

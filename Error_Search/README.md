@@ -1,10 +1,14 @@
 # To Do:
 
+* About page
+* Welcome page
+* Search criteria
+* Profile page
+* Replacement of =&gt / =&lt etc for returned results within json
+
+-----------------------------------------------------------
+
 * Languages checkboxes that renders a framework option
-
-* rails navigation when a search is performed to go to a new page 
-
-* Home page that enables routing
 
 * Login page 
 
@@ -24,7 +28,6 @@
 
 * Favourited results?? 
 
-* Replacement of =&gt / =&lt etc for returned results within json
 
 * CHECK SCREENSHOT ON DESKTOP FOR SETTING UP REACT ROUTES???
     - https://www.digitalocean.com/community/tutorials/how-to-set-up-a-ruby-on-rails-project-with-a-react-frontend

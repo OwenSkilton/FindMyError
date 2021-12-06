@@ -3,6 +3,9 @@ import React from 'react';
 const MainResults = (result) => {
     const truncate = (str, max, suffix) => str.length < max ? str : `${str.substr(0, str.substr(0, max - suffix.length).lastIndexOf(' '))}${suffix}`;
 
+    const replaceJsonSyntax = (resultTitle) =>{
+       return resultTitle.replace(/&#39;/g,'\'').replace(/&quot;/g,'"').replace(/&gt;/g,'>').replace(/&lt;/g,'<')
+    }
     return (
         <>
             <div className={"results"}>
@@ -14,7 +17,7 @@ const MainResults = (result) => {
                 <div className={"results-content"}>
                     <h3>
                         <a href={result.link} className={"hyperlink-for-question"}>
-                            {truncate(result.title.replace(/&#39;/g,'\'').replace(/&quot;/g,'"'), 80, "...")}
+                            {truncate(replaceJsonSyntax(result.title), 80, "...")}
                         </a>
                     </h3>
                     <p>

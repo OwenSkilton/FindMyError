@@ -9,6 +9,11 @@ body {
   font-family: 'Raleway', sans-serif;
 }
 
+.searchbar-outer-padding{
+  position: relative;
+  overflow: hidden;
+}
+
 .search {
   &__container {
     padding-top: 64px;
@@ -17,28 +22,46 @@ body {
   &__input {
     width: 90%;
     padding: 12px 24px;
-
     background-color: transparent;
     font-size: 14px;
     line-height: 18px;
-
     color: #575756;
-    background-color: transparent;
-
     background-repeat: no-repeat;
     background-size: 18px 18px;
     background-position: 95% center;
-    border-radius: 50px;
-    border: 1px solid #575756;
+
     backface-visibility: hidden;
     transform-style: preserve-3d;
+    border-bottom-left-radius: 50px;
+    border-top-left-radius: 50px;
+    border-left: 1px solid #575756;
+    border-top: 1px solid #575756;
+    border-bottom: 1px solid #575756;
+    border-right: transparent;
 
     &::placeholder {
-      //color: color(#575756 a(0.8));
       text-transform: uppercase;
       letter-spacing: 1.5px;
     }
   }
+}
+
+.search-button{
+  position: absolute;
+  padding: 9px 16px;
+  background-color: transparent;
+  color: #575756;
+
+  border-bottom-right-radius: 50px;
+  border-top-right-radius: 50px;
+  border-right: 1px solid #575756;
+  border-top: 1px solid #575756;
+  border-bottom: 1px solid #575756;
+  border-left: transparent;
+}
+
+.search-checkboxes{
+  margin: 1rem;
 }
 
 .LanguagesCheckbox{

@@ -20,8 +20,8 @@ const SearchBar = () => {
     return (
 
         <>
-            <form onSubmit={handleSubmit}>
-                <div className={"search__container"}>
+            <form className={"search__container"} onSubmit={handleSubmit}>
+                <div className={"searchbar-outer-padding"}>
                 <input
                     type="text"
                     id={"SearchBar"}
@@ -31,7 +31,6 @@ const SearchBar = () => {
                     value={search}
                     onChange={(e)=>setSearch(e.target.value)}
                 />
-                </div>
                 <Link
                     to="/results/ResultsPage"
                     state={{
@@ -39,11 +38,13 @@ const SearchBar = () => {
                         languages: languages
                     }}
                 >
-                    <button type="submit"><i className="fa fa-search"></i></button>
+                    <button className={"search-button"} type="submit"><i className="fa fa-search"></i></button>
                 </Link>
+                </div>
             </form>
-            <br/>
-            <SearchParams updateLanguages={updateLanguages}/>
+            <div className={"search-checkboxes"}>
+                <SearchParams updateLanguages={updateLanguages}/>
+            </div>
         </>
     );
 };
