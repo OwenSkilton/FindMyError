@@ -13,7 +13,7 @@ import ProfileHome from "../Profile/ProfileHome";
 
 const NavbarRouting = () => {
     return (
-        <div className={'container'}>
+        <div className={"app-container"}>
             <BrowserRouter>
                 <Navbar/>
                 <Routes>
