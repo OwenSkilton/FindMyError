@@ -872,7 +872,7 @@ const ResultsIndex = () => {
 
     return (
         <>
-            <div className={"ResultsPlusSearchCriteriaArea"}>
+            <div className={"results-page-search-criteria"}>
                 <ResultsPageSearchCriteria/>
                 { loading ? renderLoading() : renderResults()}
             </div>
