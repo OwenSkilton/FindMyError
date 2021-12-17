@@ -1,0 +1,22 @@
+.loading-container{
+
+  //Misc
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 1rem auto 1rem 1rem;
+
+  //Positioning
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  // Font
+  font-weight: bold;
+  font-size: xx-large;
+}
+
+// Easiest way to centre items:
+//    - display flex
+//    - justify-content: center;
+//    - align-items: center;
+

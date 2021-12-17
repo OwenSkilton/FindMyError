@@ -1,6 +1,6 @@
 import React from 'react';
 
-const MainResults = (result) => {
+const ResultsBody = (result) => {
     const truncate = (str, max, suffix) => str.length < max ? str : `${str.substr(0, str.substr(0, max - suffix.length).lastIndexOf(' '))}${suffix}`;
 
     const replaceJsonSyntax = (resultTitle) =>{
@@ -9,11 +9,11 @@ const MainResults = (result) => {
     return (
         <>
             <div className={"results"}>
-            <span className={"Icons"}>
-                    <i className="bi bi-arrow-up-square"></i>
-                    <i className="bi bi-star"></i>
-                    <i className="bi bi-arrow-down-square"></i>
-            </span>
+                <span>
+                        <i className="bi bi-arrow-up-square"></i>
+                        <i className="bi bi-star"></i>
+                        <i className="bi bi-arrow-down-square"></i>
+                </span>
                 <div className={"results-content"}>
                     <h3>
                         <a href={result.link} className={"hyperlink-for-question"}>
@@ -23,7 +23,7 @@ const MainResults = (result) => {
                     <p>
 
                     </p>
-                    <div className={"tags"}>
+                    <div className={"inner-results-tags"}>
                         {result.tags.map((tag)=>{
                             return <a className={"inner-tags"} key={tag}>{tag}</a>
                         })}
@@ -34,4 +34,4 @@ const MainResults = (result) => {
     );
 };
 
-export default MainResults;
+export default ResultsBody;

@@ -9,6 +9,10 @@ body {
   font-family: 'Raleway', sans-serif;
 }
 
+.search-page{
+
+}
+
 .searchbar-outer-padding{
   position: relative;
   overflow: hidden;
@@ -60,8 +64,15 @@ body {
   border-left: transparent;
 }
 
-.search-checkboxes{
+.search-page-dropdowns{
   margin: 1rem;
+  .language-dropdown{
+    margin: 1rem;
+  }
+  .language-framework-label{
+    margin: 1rem;
+    font-weight: bold;
+  }
 }
 
 .LanguagesCheckbox{

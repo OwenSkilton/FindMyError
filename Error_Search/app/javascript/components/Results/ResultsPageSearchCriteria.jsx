@@ -1,35 +1,25 @@
-import React from 'react';
-
-const ResultsPageSearchCriteria = () => {
-    const renderLanguages = () =>{
-        return(
-            <>
-                <option value="Java">Java</option>
-                <option value="JS">JavaScript</option>
-                <option value="Ruby">Ruby</option>
-            </>
-        )
-    }
-    const renderFrameworks = () =>{
-
-        return(
-            <>
-                <option value="Java">Java</option>
-                <option value="JS">JavaScript</option>
-                <option value="Ruby">Ruby</option>
-            </>
-        )
-    }
+import React, {useState} from 'react';
+import RenderLanguages from "../helpers/RenderLanguages";
+import RenderFrameworks from "../helpers/RenderFrameworks";
+const ResultsPageSearchCriteria = ({language, updateLanguage, framework, updateFramework}) => {
     return (
-        <div className={"SearchCriteria"}>
+        <div className={"search-refinement-body"}>
+            <ol>
+                <li> </li>
+                <li> </li>
+                <li> </li>
+            </ol>
             <h2 className={"Title"}>Refine Search:</h2>
-
-            <div className={"SearchCriteriaCheckBoxes"}>
-                Add dropdown box for language and framework
+            <div className={"search-page-dropdowns"}>
+                <div className={"language-dropdown"}>
+                    <label className={"language-framework-label"}>Language:</label>
+                    <RenderLanguages updateLanguage={updateLanguage}/>
+                </div>
+                <div className={"language-dropdown"}>
+                    <RenderFrameworks language={language} updateFramework={updateFramework}/>
+                </div>
+                <button onClick={()=>console.log(language, framework)}>click</button>
             </div>
-            <select>
-                {renderLanguages()}
-            </select>
         </div>
     );
 };

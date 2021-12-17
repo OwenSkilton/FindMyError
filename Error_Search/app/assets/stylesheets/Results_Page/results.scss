@@ -1,0 +1,30 @@
+// Place all the styles related to the results controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+//.ResultsPlusSearchCriteriaArea{
+//  justify-content: space-between;
+//  margin: 0.5rem;
+//  box-sizing: border-box;
+//  display: inline-flex;
+//  max-width: var(--max-width);
+//  width: 90%;
+//}
+
+.ResultsPlusSearchCriteriaArea{
+  justify-content: space-between;
+  margin: 0.5rem;
+  box-sizing: border-box;
+  display: inline-flex;
+  position: relative;
+  max-width: var(--max-width);
+  width: 90%;
+}
+
+i:after, i:before{
+  content: '';
+  display: block;
+  height: 10px;
+  position: relative;
+  box-sizing: inherit;
+}
