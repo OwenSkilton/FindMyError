@@ -4,12 +4,25 @@ import ResultsBody from "./ResultsBody";
 import ResultsPageSearchCriteria from "./ResultsPageSearchCriteria";
 import {useLocation} from "react-router-dom";
 import renderLoading from "./Loading";
+import FilterButtons from "./FilterButtons"
 
 const ResultsIndex = () => {
     // const [loading, setLoading] = useState(true)
     // const [search, setSearch] = useState(useLocation().state.search)
     // const [language, setLanguage] = useState(useLocation().state.language)
     // const [results, setResults] = useState([])
+
+    // useEffect(()=>{
+    //     async function fetchStackOverflowAPI() {
+    //         const url = `https://api.stackexchange.com/2.3/search?order=desc&sort=votes&intitle=${search}&site=stackoverflow`
+    //         // Tags api : https://api.stackexchange.com/2.3/search?order=desc&sort=activity&tagged=reactjs&intitle=useEffect&site=stackoverflow
+    //         const data = await fetch(url)
+    //         const dataJson = await data.json();
+    //         setResults(dataJson)
+    //     }
+    //
+    //     fetchStackOverflowAPI().finally(() => setLoading(false));
+    // }, [search])
 
     const [results, setResults] = useState({
         "items": [
@@ -815,29 +828,9 @@ const ResultsIndex = () => {
         "quota_remaining": 9972
     })
     const [loading, setLoading] = useState(false)
-    const [language, setLanguage] = useState("Ruby")
-    const [framework, setFramework] = useState("Rails")
-
-    // useEffect(()=>{
-    //     async function fetchStackOverflowAPI() {
-    //         const url = `https://api.stackexchange.com/2.3/search?order=desc&sort=votes&intitle=${search}&site=stackoverflow`
-    //         // Tags api : https://api.stackexchange.com/2.3/search?order=desc&sort=activity&tagged=reactjs&intitle=useEffect&site=stackoverflow
-    //         const data = await fetch(url)
-    //         const dataJson = await data.json();
-    //         setResults(dataJson)
-    //     }
-    //
-    //     fetchStackOverflowAPI().finally(() => setLoading(false));
-    // }, [search])
-
-
-    const renderEmptyResults = () =>{
-        return(
-            <div className="loading-container">
-                <h2>No Results Found!</h2>
-            </div>
-        )
-    }
+    const [language, setLanguage] = useState("empty")
+    const [framework, setFramework] = useState("empty")
+    const [showFrameworkDropdown, setShowFrameworkDropdown] = useState(false)
 
 
     const numberOfResults = () => {
@@ -849,17 +842,12 @@ const ResultsIndex = () => {
     }
 
     const renderResults = () =>{
-
             const resultItems = results.items
             return (
                 <>
                     <div className="results-container">
-                        <h2>{numberOfResults()}</h2>
-                        <div className={"search-results-buttons"}>
-                            <button className={"filter-button"}>Most popular</button>
-                            <button className={"filter-button"}>Relevance</button>
-                            <button className={"filter-button"}>Random</button>
-                        </div>
+                        {numberOfResults()}
+                        <FilterButtons/>
                         <div className={"search-results-body"}>
                             {resultItems.map((result) => {
                                 return <ResultsBody key={result.question_id} {...result}/>
@@ -873,7 +861,14 @@ const ResultsIndex = () => {
     return (
         <>
             <div className={"results-page-search-criteria"}>
-                <ResultsPageSearchCriteria/>
+                <ResultsPageSearchCriteria
+                    language={language}
+                    setLanguage={setLanguage}
+                    framework={framework}
+                    setFramework={setFramework}
+                    showFrameworkDropdown={showFrameworkDropdown}
+                    setShowFrameworkDropdown={setShowFrameworkDropdown}
+                />
                 { loading ? renderLoading() : renderResults()}
             </div>
         </>

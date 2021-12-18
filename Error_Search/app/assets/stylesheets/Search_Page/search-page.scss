@@ -9,10 +9,6 @@ body {
   font-family: 'Raleway', sans-serif;
 }
 
-.search-page{
-
-}
-
 .searchbar-outer-padding{
   position: relative;
   overflow: hidden;
@@ -48,35 +44,4 @@ body {
       letter-spacing: 1.5px;
     }
   }
-}
-
-.search-button{
-  position: absolute;
-  padding: 9px 16px;
-  background-color: transparent;
-  color: #575756;
-
-  border-bottom-right-radius: 50px;
-  border-top-right-radius: 50px;
-  border-right: 1px solid #575756;
-  border-top: 1px solid #575756;
-  border-bottom: 1px solid #575756;
-  border-left: transparent;
-}
-
-.search-page-dropdowns{
-  margin: 1rem;
-  .language-dropdown{
-    margin: 1rem;
-  }
-  .language-framework-label{
-    margin: 1rem;
-    font-weight: bold;
-  }
-}
-
-.LanguagesCheckbox{
-  margin-left: 10px;
-  margin-right: 10px;
-  padding-top: 10px;
 }

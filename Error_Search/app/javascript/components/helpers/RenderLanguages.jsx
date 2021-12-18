@@ -1,13 +1,22 @@
 import React from "react";
 
 const renderLanguages = ({updateLanguage}) =>{
+
+    const handleChange=(e)=>{
+        updateLanguage(e)
+    }
+
     return(
-        <select onChange={(e)=>updateLanguage(e.target.value)}>
-            <option value="">None</option>
-            <option value="Java">Java</option>
-            <option value="JS">JavaScript</option>
-            <option value="Ruby">Ruby</option>
-        </select>
+        <>
+            <label className="select">
+                <select className="select" onChange={(e)=>handleChange(e.target.value)}>
+                    <option value="empty">None</option>
+                    <option value="Java">Java</option>
+                    <option value="JS">JavaScript</option>
+                    <option value="Ruby">Ruby</option>
+                </select>
+            </label>
+    </>
     )
 }
 

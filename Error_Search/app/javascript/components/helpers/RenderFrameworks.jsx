@@ -27,13 +27,19 @@ const renderFrameworks = ({language, updateFramework}) =>{
         }
     }
 
+    const handleChange=(e)=>{
+        updateFramework(e)
+    }
+
     return(
         <>
             <label className={"language-framework-label"}>Framework:</label>
-            <select onChange={(e)=>updateFramework(e.target.value)}>
-                <option value="">None</option>
-                {renderCorrectFrameworks()}
-            </select>
+            <label className="select">
+                <select onChange={(e)=>handleChange(e.target.value)}>
+                    <option value="empty">None</option>
+                    {renderCorrectFrameworks()}
+                </select>
+            </label>
         </>
     )
 }
