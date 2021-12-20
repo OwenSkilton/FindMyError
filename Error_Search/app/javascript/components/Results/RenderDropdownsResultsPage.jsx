@@ -2,7 +2,7 @@ import React from 'react';
 import RenderLanguages from "../helpers/RenderLanguages";
 import RenderFrameworks from "../helpers/RenderFrameworks";
 
-const RenderDropdownsSearchPage = ({language, updateLanguage, framework, updateFramework, showFrameworkDropdown, setShowFrameworkDropdown}) => {
+const RenderDropdownsResultsPage = ({language, updateLanguage, framework, updateFramework, showFrameworkDropdown, setShowFrameworkDropdown}) => {
     return (
         <>
             <div className={"results-page-dropdowns"}>
@@ -25,4 +25,4 @@ const RenderDropdownsSearchPage = ({language, updateLanguage, framework, updateF
     );
 };
 
-export default RenderDropdownsSearchPage;
+export default RenderDropdownsResultsPage;

@@ -1,13 +1,12 @@
 import React, {useState} from 'react';
-import RenderLanguages from "../helpers/RenderLanguages";
-import RenderFrameworks from "../helpers/RenderFrameworks";
 import RenderDropdownsResultsPage from "./RenderDropdownsResultsPage";
+import {dropdownValuesToRenderFrameworkDropdown} from '../helpers/dropdownValuesToRenderFrameworkDropdown'
 const ResultsPageSearchCriteria = ({language, setLanguage, framework, setFramework, showFrameworkDropdown, setShowFrameworkDropdown}) => {
 
     const updateLanguage = (language) =>{
         setLanguage(language)
         setFramework("empty")
-        if(language !== "empty"){
+        if(dropdownValuesToRenderFrameworkDropdown.indexOf(language) > -1){
             setShowFrameworkDropdown(true)
             document.getElementById("framework-dropdown").selectedIndex = null
         } else{

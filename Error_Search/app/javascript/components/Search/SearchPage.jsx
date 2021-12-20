@@ -1,6 +1,7 @@
 import React, {useState} from "react"
 import {Link} from "react-router-dom";
 import RenderDropdownsSearchPage from './RenderDropdownsSearchPage'
+import {dropdownValuesToRenderFrameworkDropdown} from '../helpers/dropdownValuesToRenderFrameworkDropdown'
 
 const SearchPage = () => {
     const [search, setSearch] = useState("")
@@ -11,13 +12,14 @@ const SearchPage = () => {
     const updateLanguage = (language) =>{
         setLanguage(language)
         setFramework("empty")
-        if(language !== "empty"){
+        if(dropdownValuesToRenderFrameworkDropdown.indexOf(language) > -1){
             setShowFrameworkDropdown(true)
             document.getElementById("framework-dropdown").selectedIndex = null
         } else{
             setShowFrameworkDropdown(false)
         }
     }
+
     const updateFramework = (framework) =>{
         setFramework(framework)
     }
