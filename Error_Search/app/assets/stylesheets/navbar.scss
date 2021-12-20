@@ -168,8 +168,13 @@ body{
   margin: 1rem auto;;
 }
 
+nav{
+  max-width: 1400px;
+}
+
 @media (max-width: 750px) {
   nav{
     width:636.25px;
   }
 }
+

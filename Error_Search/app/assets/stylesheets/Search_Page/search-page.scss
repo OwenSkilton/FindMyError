@@ -16,7 +16,9 @@ body {
 
 .search {
   &__container {
+    margin: 3rem;
     padding-top: 64px;
+    max-width: 1400px;
   }
 
   &__input {

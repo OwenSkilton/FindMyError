@@ -8,13 +8,10 @@
 
 -----------------------------------------------------------
 
-* Languages checkboxes that renders a framework option
 
 * Login page 
 
 * Api selection set up
-
-* results screen with the left-hand side container selection (Amazon) and right hand side results screen
 
 * Accounts?
 
