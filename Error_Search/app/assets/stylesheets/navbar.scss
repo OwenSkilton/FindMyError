@@ -66,6 +66,7 @@ PRESENTATION STYLES
 
 .menu__list{
   display: flex;
+  justify-content: center;
 }
 
 .menu__link{
@@ -165,4 +166,10 @@ body{
   max-width: 480px;
   height: 280px;
   margin: 1rem auto;;
+}
+
+@media (max-width: 750px) {
+  nav{
+    width:636.25px;
+  }
 }
