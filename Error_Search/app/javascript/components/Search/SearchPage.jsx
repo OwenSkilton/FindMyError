@@ -13,6 +13,7 @@ const SearchPage = () => {
         setFramework("empty")
         if(language !== "empty"){
             setShowFrameworkDropdown(true)
+            document.getElementById("framework-dropdown").selectedIndex = null
         } else{
             setShowFrameworkDropdown(false)
         }

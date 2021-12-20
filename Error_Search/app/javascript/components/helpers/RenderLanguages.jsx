@@ -9,7 +9,7 @@ const renderLanguages = ({updateLanguage}) =>{
     return(
         <>
             <label className="select">
-                <select className="select" onChange={(e)=>handleChange(e.target.value)}>
+                <select id={"language-dropdown"} className="select" onChange={(e)=>handleChange(e.target.value)}>
                     <option value="empty">None</option>
                     <option value="Java">Java</option>
                     <option value="JS">JavaScript</option>

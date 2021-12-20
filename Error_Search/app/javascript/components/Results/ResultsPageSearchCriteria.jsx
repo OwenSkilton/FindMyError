@@ -3,11 +3,13 @@ import RenderLanguages from "../helpers/RenderLanguages";
 import RenderFrameworks from "../helpers/RenderFrameworks";
 import RenderDropdownsResultsPage from "./RenderDropdownsResultsPage";
 const ResultsPageSearchCriteria = ({language, setLanguage, framework, setFramework, showFrameworkDropdown, setShowFrameworkDropdown}) => {
+
     const updateLanguage = (language) =>{
         setLanguage(language)
         setFramework("empty")
         if(language !== "empty"){
             setShowFrameworkDropdown(true)
+            document.getElementById("framework-dropdown").selectedIndex = null
         } else{
             setShowFrameworkDropdown(false)
         }
