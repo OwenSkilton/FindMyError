@@ -3,7 +3,7 @@ import '../../../assets/stylesheets/navbar.scss'
 
 const Navbar = () => {
     return (
-        <>
+        <div className={"app-container"}>
             <nav className="page__menu menu">
                 <ul className="menu__list r-list">
                     <li className="menu__group" onClick={()=>window.location.assign('/')}>
@@ -20,7 +20,7 @@ const Navbar = () => {
                     </li>
                 </ul>
             </nav>
-        </>
+        </div>
     );
 };
 
