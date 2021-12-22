@@ -15,17 +15,14 @@ const ResultsBody = (result) => {
                         <i className="bi bi-arrow-down-square"></i>
                 </span>
                 <div className={"results-content"}>
-                    <h3>
+                    <div className="question-title">
                         <a href={result.link} className={"hyperlink-for-question"}>
                             {truncate(replaceJsonSyntax(result.title), 80, "...")}
                         </a>
-                    </h3>
-                    <p>
-
-                    </p>
+                    </div>
                     <div className={"inner-results-tags"}>
                         {result.tags.map((tag)=>{
-                            return <a className={"inner-tags"} key={tag}>{tag}</a>
+                            return <p className={"inner-tags"} key={tag}>{tag}</p>
                         })}
                     </div>
                 </div>
