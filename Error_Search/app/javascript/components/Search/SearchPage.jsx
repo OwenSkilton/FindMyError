@@ -26,9 +26,9 @@ const SearchPage = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const url = `http://localhost:3000/resultsPageArguments?search=${search}`
+        const url = `http://localhost:3000/resultsPageArguments?language=${language}&search=${search}&framework=${framework}`
         await fetch(url).then(resp=>console.log(resp))
-            .finally(setTimeout(() => {window.location.assign('/results/ResultsPage')}, 100))
+            .finally(setTimeout(() => {window.location.assign('/results/ResultsPage')}, 1000))
     }
 
     return (

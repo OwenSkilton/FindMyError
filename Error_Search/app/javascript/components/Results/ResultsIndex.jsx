@@ -11,9 +11,9 @@ export default class ResultsIndex extends React.Component {
         super(props);
         this.state={
             results: "",
-            search: this.props.search,
             loading: true,
-            language: this.props.loading,
+            search: this.props.search,
+            language: this.props.language,
             framework: this.props.framework,
             showFrameworkDropdown: false,
 
