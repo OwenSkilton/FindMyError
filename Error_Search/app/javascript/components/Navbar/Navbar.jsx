@@ -7,16 +7,16 @@ const Navbar = () => {
             <nav className="page__menu menu">
                 <ul className="menu__list r-list">
                     <li className="menu__group" onClick={()=>window.location.assign('/')}>
-                        <label className="menu__link r-link text-underlined">Error Search</label>
+                        <a className="menu__link r-link text-underlined">Error Search</a>
                     </li>
                     <li className="menu__group" onClick={()=>window.location.assign('/search/Search')}>
-                        <label className="menu__link r-link text-underlined">Search</label>
+                        <a className="menu__link r-link text-underlined">Search</a>
                     </li>
                     <li className="menu__group" onClick={()=>window.location.assign('/about/About')}>
-                        <label className="menu__link r-link text-underlined">About</label>
+                        <a className="menu__link r-link text-underlined">About</a>
                     </li>
                     <li className="menu__group" onClick={()=>window.location.assign('/profile/Profile')}>
-                        <label className="menu__link r-link text-underlined">Profile</label>
+                        <a className="menu__link r-link text-underlined">Profile</a>
                     </li>
                 </ul>
             </nav>

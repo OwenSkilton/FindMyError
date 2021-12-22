@@ -26,7 +26,7 @@ const SearchPage = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        window.location.assign('Search/SearchPage')
+        window.location.assign('/results/ResultsPage')
     }
 
     return (
