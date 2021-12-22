@@ -1,26 +1,26 @@
 import React from 'react';
-import {Link} from "react-router-dom";
 import '../../../assets/stylesheets/navbar.scss'
 
 const Navbar = () => {
     return (
-        <>
+        <div className={"app-container"}>
             <nav className="page__menu menu">
                 <ul className="menu__list r-list">
-                    <li className="menu__group">
-                        <Link to={"/"} className="menu__link r-link text-underlined">ErrorSearch</Link>
+                    <li className="menu__group" onClick={()=>window.location.assign('/')}>
+                        <a className="menu__link r-link text-underlined">Error Search</a>
                     </li>
-                    <li className="menu__group">
-                        <Link to={"/search/Search"} className="menu__link r-link text-underlined">Search</Link>
+                    <li className="menu__group" onClick={()=>window.location.assign('/search/Search')}>
+                        <a className="menu__link r-link text-underlined">Search</a>
                     </li>
-                    <li className="menu__group">
-                        <Link to={"/about/About"} className="menu__link r-link text-underlined">About</Link>
-                    </li><li className="menu__group">
-                        <Link to={"/profile/Profile"} className="menu__link r-link text-underlined">Account</Link>
+                    <li className="menu__group" onClick={()=>window.location.assign('/about/About')}>
+                        <a className="menu__link r-link text-underlined">About</a>
+                    </li>
+                    <li className="menu__group" onClick={()=>window.location.assign('/profile/Profile')}>
+                        <a className="menu__link r-link text-underlined">Profile</a>
                     </li>
                 </ul>
             </nav>
-        </>
+        </div>
     );
 };
 

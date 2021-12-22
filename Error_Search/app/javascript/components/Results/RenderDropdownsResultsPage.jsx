@@ -2,7 +2,7 @@ import React from 'react';
 import RenderLanguages from "../helpers/RenderLanguages";
 import RenderFrameworks from "../helpers/RenderFrameworks";
 
-const RenderDropdownsResultsPage = ({language, updateLanguage, framework, updateFramework, showFrameworkDropdown, setShowFrameworkDropdown}) => {
+const RenderDropdownsResultsPage = ({language, updateLanguage, framework, updateFramework, showFrameworkDropdown}) => {
     return (
         <>
             <div className={"results-page-dropdowns"}>
@@ -10,7 +10,6 @@ const RenderDropdownsResultsPage = ({language, updateLanguage, framework, update
                     <label className={"language-framework-label"}>Language:</label>
                     <RenderLanguages
                         updateLanguage={updateLanguage}
-                        setShowFrameworkDropdown={setShowFrameworkDropdown}
                     />
                 </div>
                 <div className={"framework-dropdown"}>

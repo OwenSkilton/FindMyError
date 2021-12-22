@@ -28,7 +28,6 @@ const ResultsPageSearchCriteria = ({language, setLanguage, framework, setFramewo
                         updateLanguage={updateLanguage}
                         updateFramework={updateFramework}
                         showFrameworkDropdown={showFrameworkDropdown}
-                        setShowFrameworkDropdown={setShowFrameworkDropdown}
                     />
                 </li>
             </ol>

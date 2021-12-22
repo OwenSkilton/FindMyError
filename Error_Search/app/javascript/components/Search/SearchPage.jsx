@@ -26,6 +26,9 @@ const SearchPage = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        const url = `http://localhost:3000/resultsPageArguments?language=${language}&search=${search}&framework=${framework}`
+        await fetch(url).then(resp=>console.log(resp))
+            .finally(setTimeout(() => {window.location.assign('/results/ResultsPage')}, 1000))
     }
 
     return (
@@ -42,16 +45,7 @@ const SearchPage = () => {
                         value={search}
                         onChange={(e)=>setSearch(e.target.value)}
                     />
-                        <Link
-                            to="/results/ResultsPage"
-                            state={{
-                                search: search,
-                                language: language,
-                                framework: framework
-                            }}
-                        >
-                        <button className={"search-button"} type="submit"><i className="fa fa-search"></i></button>
-                    </Link>
+                    <button className={"search-button"} type="submit"><i className="fa fa-search"></i></button>
                 </div>
             </form>
             <RenderDropdownsSearchPage

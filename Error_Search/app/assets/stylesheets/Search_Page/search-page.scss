@@ -14,15 +14,18 @@ body {
   overflow: hidden;
 }
 
+.search-page{
+  margin: 3rem;
+}
+
 .search {
   &__container {
     margin: 3rem;
     padding-top: 64px;
-    max-width: 1400px;
   }
 
   &__input {
-    width: 90%;
+    width: 95%;
     padding: 12px 24px;
     background-color: transparent;
     font-size: 14px;

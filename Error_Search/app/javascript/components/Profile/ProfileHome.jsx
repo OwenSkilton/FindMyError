@@ -1,11 +1,14 @@
-import React from 'react';
+import React, {Component} from 'react';
 
-const ProfileHome = () => {
-    return (
-        <div className={"profile-page"}>
-            Profile
-        </div>
-    );
+export default class ProfileHome extends Component {
+    constructor(props) {
+        super(props);
+    }
+    render() {
+        return (
+            <div className={"profile-page"}>
+                Profile: {this.props.user}
+            </div>
+        );
+    }
 };
-
-export default ProfileHome;
