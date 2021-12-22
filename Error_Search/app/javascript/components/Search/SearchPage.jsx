@@ -26,6 +26,7 @@ const SearchPage = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        window.location.assign('Search/SearchPage')
     }
 
     return (
@@ -42,16 +43,7 @@ const SearchPage = () => {
                         value={search}
                         onChange={(e)=>setSearch(e.target.value)}
                     />
-                        <Link
-                            to="/results/ResultsPage"
-                            state={{
-                                search: search,
-                                language: language,
-                                framework: framework
-                            }}
-                        >
-                        <button className={"search-button"} type="submit"><i className="fa fa-search"></i></button>
-                    </Link>
+                    <button className={"search-button"} type="submit"><i className="fa fa-search"></i></button>
                 </div>
             </form>
             <RenderDropdownsSearchPage
