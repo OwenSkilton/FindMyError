@@ -2,29 +2,18 @@
 
 * About page
 * Welcome page
-* Search criteria
+* Search criteria section (extra options to match api arguments)
 * Profile page
-* Replacement of =&gt / =&lt etc for returned results within json
 
 -----------------------------------------------------------
 
 
-* Login page 
+* Login / signup page CSS
 
-* Api selection set up
-
-* Accounts?
-
-* CSS!!!!
+* Spring entities + get mapping to handle API class (Bootcamp project)
 
 * Cucumber testing
 
-* Upvote for posts?
+* Upvote for posts? / Favourited results??
 
-* results from 2 different websites 
-
-* Favourited results?? 
-
-
-* CHECK SCREENSHOT ON DESKTOP FOR SETTING UP REACT ROUTES???
-    - https://www.digitalocean.com/community/tutorials/how-to-set-up-a-ruby-on-rails-project-with-a-react-frontend
+* Google custom search engine for documentation

@@ -50,6 +50,7 @@ export default class ResultsIndex extends React.Component {
 
     renderResults = () =>{
         const resultItems = this.state.results.items
+        console.log(resultItems)
         return (
             <>
                 <div className="results-container">

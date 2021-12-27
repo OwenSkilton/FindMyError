@@ -16,6 +16,7 @@
 </head>
 
 <body>
+
 <% if flash[:notice] %>
   <div class="notification is-primary global-notification">
     <p class="notice"> <%= notice%></p>
@@ -28,7 +29,12 @@
   </div>
 <%end%>
 
-<%= react_component("Navbar/Navbar") %>
+<% if user_signed_in? %>
+  <%= react_component("Navbar/Navbar") %>
+<% else %>
+  <%= react_component("Navbar/NoUserNavbar") %>
+<% end  %>
+
 <%= yield %>
 </body>
 </html>
