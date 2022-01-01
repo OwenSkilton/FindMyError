@@ -1,5 +1,5 @@
 class ProfileController < ApplicationController
   def Profile
-    @user="Wagwan piffting"
+    @user=current_user
   end
 end

@@ -19,7 +19,7 @@ const RenderDropdownsResultsPage = ({language, updateLanguage, framework, update
                     /> : null}
                 </div>
             </div>
-            <button onClick={()=>console.log(language, framework)}>click</button>
+            <button onClick={()=>console.log("Language: " + language, "\nFramework: " + framework)}>click</button>
         </>
     );
 };

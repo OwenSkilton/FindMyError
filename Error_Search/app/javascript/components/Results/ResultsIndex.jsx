@@ -16,8 +16,8 @@ export default class ResultsIndex extends React.Component {
             search: this.props.search,
             language: this.props.language,
             framework: this.props.framework,
+            user: this.props.user,
             showFrameworkDropdown: false,
-
         }
         this.fetchStackOverflowAPI=this.fetchStackOverflowAPI.bind(this)
         this.numberOfResults=this.numberOfResults.bind(this)
@@ -25,6 +25,7 @@ export default class ResultsIndex extends React.Component {
         this.setLanguage=this.setLanguage.bind(this)
         this.setFramework=this.setFramework.bind(this)
         this.setLoading=this.setLoading.bind(this)
+        this.URLCondition=this.URLCondition.bind(this)
         this.setShowFrameworkDropdown=this.setShowFrameworkDropdown.bind(this)
     }
 
@@ -32,9 +33,19 @@ export default class ResultsIndex extends React.Component {
         this.fetchStackOverflowAPI().finally(() => this.setState({loading: false}));
     }
 
+    URLCondition(){
+        if(this.state.language === "empty" && this.state.framework === "empty") {
+            return `https://api.stackexchange.com/2.3/search?order=desc&sort=votes&intitle=${this.state.search}&site=stackoverflow`
+        } else if(this.state.language !== "empty" && this.state.framework === "empty") {
+            return `https://api.stackexchange.com/2.3/search?order=desc&sort=votes&tagged=${this.state.language}&intitle=${this.state.search}&site=stackoverflow`
+        } else {
+           return `https://api.stackexchange.com/2.3/search?order=desc&sort=votes&tagged=${this.state.language}%3B${this.state.framework}&intitle=${this.state.search}&site=stackoverflow`
+        }
+
+    }
+
     async fetchStackOverflowAPI() {
-        const url = `https://api.stackexchange.com/2.3/search?order=desc&sort=votes&intitle=${this.state.search}&site=stackoverflow`
-        // Tags api : https://api.stackexchange.com/2.3/search?order=desc&sort=activity&tagged=reactjs&intitle=useEffect&site=stackoverflow
+        const url = this.URLCondition();
         const data = await fetch(url)
         const dataJson = await data.json();
         this.setState({results: dataJson})
@@ -50,6 +61,7 @@ export default class ResultsIndex extends React.Component {
 
     renderResults = () =>{
         const resultItems = this.state.results.items
+        const user = this.state.user
         return (
             <>
                 <div className="results-container">
@@ -57,7 +69,7 @@ export default class ResultsIndex extends React.Component {
                     <FilterButtons/>
                     <div className={"search-results-body"}>
                         {resultItems.map((result) => {
-                            return <ResultsBody key={result.question_id} {...result}/>
+                            return <ResultsBody key={result.question_id} {...result} user={user} />
                         })}
                     </div>
                 </div>
@@ -87,7 +99,6 @@ export default class ResultsIndex extends React.Component {
     }
 
     render() {
-
         return (
             <>
                 <div className={"results-page-search-criteria"}>
