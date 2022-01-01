@@ -29,6 +29,18 @@ const ResultsBody = ({tags, question_id, title, link, user}) => {
         const dataJson = await data.json();
         console.log(dataJson)
     }
+    const deleteFavourite = async (question_id) => {
+        setShowFavouritedStar(!showFavouritedStar)
+        const email = ConvertAtSymbolInEmail(user.email)
+        const url = `http://localhost:8080/backend/deletefavourite/${email}/${question_id}`;
+        await fetch(url,
+            {
+                method: 'Delete',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+    }
     const checkIfPostIsFavouriteToUser = async () => {
         const email = ConvertAtSymbolInEmail(user.email)
         const url = `http://localhost:8080/backend/findfavourite/${email}/${question_id}`;
@@ -49,8 +61,8 @@ const ResultsBody = ({tags, question_id, title, link, user}) => {
                         </div>
                         <div className={"favourite"}>
                         {showFavouritedStar ?
-                            <i className="fa fa-star checked" onClick={() => postFavourite(question_id, link)}/> :
-                            <i className="bi bi-star" onClick={() => postFavourite(question_id, link)}/>
+                            <i className="fa fa-star checked" onClick={() => deleteFavourite(question_id)}/> :
+                            <i className="bi bi-star" onClick={() => postFavourite(question_id)}/>
                         }
                         </div>
                         <div>

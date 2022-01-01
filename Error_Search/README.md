@@ -10,10 +10,10 @@
 
 * Login / signup page CSS
 
-* Spring entities + get mapping to handle checks for favourites and persisting search history
+* Spring entities + get mapping to handle persisting search history
 
 * Cucumber testing
 
-* Upvote for posts? / Favourited results??
+* Upvote for posts?
 
 * Google custom search engine for documentation
