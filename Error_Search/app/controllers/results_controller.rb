@@ -4,5 +4,6 @@ class ResultsController < ApplicationController
     @search = session[:search]
     @language = session[:language]
     @framework = session[:framework]
+    @user = current_user
   end
 end

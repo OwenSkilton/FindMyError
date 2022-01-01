@@ -10,7 +10,7 @@
 
 * Login / signup page CSS
 
-* Spring entities + get mapping to handle API class (Bootcamp project)
+* Spring entities + get mapping to handle checks for favourites and persisting search history
 
 * Cucumber testing
 
