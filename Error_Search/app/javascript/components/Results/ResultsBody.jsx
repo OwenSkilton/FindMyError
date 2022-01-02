@@ -51,7 +51,6 @@ const ResultsBody = ({tags, question_id, title, link, user}) => {
     }
 
     return (
-
         <>
             <div className={"results"}>
                 <div className="icons">

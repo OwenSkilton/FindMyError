@@ -1,23 +1,42 @@
 import React, {Component} from 'react';
+import RenderFavourites from "./RenderFavourites";
+import RenderProfilePage from "./RenderProfilePage";
+import RenderSearchHistory from "./RenderSearchHistory"
 
 export default class ProfileHome extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            user: this.props.user
+            favouritesLoading: true,
+            user: this.props.user,
+            favourites: ""
         }
+        this.findFavouritedPosts = this.findFavouritedPosts.bind(this)
+        this.ConvertAtSymbolInEmail = this.ConvertAtSymbolInEmail.bind(this)
+    }
+
+    componentDidMount() {
+        this.findFavouritedPosts()
+    }
+
+    ConvertAtSymbolInEmail(userEmail){return userEmail.replace(/@/g, "%40")}
+    async findFavouritedPosts() {
+        const email = this.ConvertAtSymbolInEmail(this.state.user.email)
+        const url = `http://localhost:8080/backend/finduserfavourites/${email}`;
+        const data = await fetch(url)
+        const dataJson = await data.json();
+        this.setState({
+            favouritesLoading: false,
+            favourites: dataJson
+        })
     }
 
     render() {
-        console.log(this.state.user)
         return (
             <div className={"profile-page"}>
-                Profile: {this.state.user.email}
-                <br/>
-                <br/>
-                <div className={"profile-buttons"}>
-                    <a rel="nofollow" data-method="delete" href="/users/sign_out">Sign Out</a>
-                </div>
+                <RenderProfilePage user={this.state.user}/>
+                {this.state.favouritesLoading ? null : <RenderFavourites favourites={this.state.favourites}/>}
+                <RenderSearchHistory />
             </div>
         );
     }
