@@ -25,7 +25,7 @@ export default class ResultsIndex extends React.Component {
         this.setLanguage=this.setLanguage.bind(this)
         this.setFramework=this.setFramework.bind(this)
         this.setLoading=this.setLoading.bind(this)
-        this.URLCondition=this.URLCondition.bind(this)
+        this.stackOverflowURLCondition=this.stackOverflowURLCondition.bind(this)
         this.setShowFrameworkDropdown=this.setShowFrameworkDropdown.bind(this)
     }
 
@@ -33,7 +33,7 @@ export default class ResultsIndex extends React.Component {
         this.fetchStackOverflowAPI().finally(() => this.setState({loading: false}));
     }
 
-    URLCondition(){
+    stackOverflowURLCondition(){
         if(this.state.language === "empty" && this.state.framework === "empty") {
             return `https://api.stackexchange.com/2.3/search?order=desc&sort=votes&intitle=${this.state.search}&site=stackoverflow`
         } else if(this.state.language !== "empty" && this.state.framework === "empty") {
@@ -41,11 +41,10 @@ export default class ResultsIndex extends React.Component {
         } else {
            return `https://api.stackexchange.com/2.3/search?order=desc&sort=votes&tagged=${this.state.language}%3B${this.state.framework}&intitle=${this.state.search}&site=stackoverflow`
         }
-
     }
 
     async fetchStackOverflowAPI() {
-        const url = this.URLCondition();
+        const url = this.stackOverflowURLCondition();
         const data = await fetch(url)
         const dataJson = await data.json();
         this.setState({results: dataJson})

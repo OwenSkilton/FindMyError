@@ -8,8 +8,10 @@ export default class ProfileHome extends Component {
         super(props);
         this.state = {
             favouritesLoading: true,
+            searchHistoryLoading: true,
             user: this.props.user,
-            favourites: ""
+            favourites: "",
+            searchHistory: ""
         }
         this.findFavouritedPosts = this.findFavouritedPosts.bind(this)
         this.ConvertAtSymbolInEmail = this.ConvertAtSymbolInEmail.bind(this)
@@ -17,6 +19,7 @@ export default class ProfileHome extends Component {
 
     componentDidMount() {
         this.findFavouritedPosts()
+        this.findSearchHistory()
     }
 
     ConvertAtSymbolInEmail(userEmail){return userEmail.replace(/@/g, "%40")}
@@ -30,13 +33,26 @@ export default class ProfileHome extends Component {
             favourites: dataJson
         })
     }
+    async findSearchHistory() {
+        const email = this.ConvertAtSymbolInEmail(this.state.user.email)
+        const url = `http://localhost:8080/backend/findusersearchhistory/${email}`;
+        const data = await fetch(url)
+        const dataJson = await data.json();
+        this.setState({
+            searchHistoryLoading: false,
+            searchHistory: dataJson
+        })
+    }
 
     render() {
+        console.log(this.state.favourites)
+        console.log(this.state.searchHistory)
         return (
             <div className={"profile-page"}>
                 <RenderProfilePage user={this.state.user}/>
                 {this.state.favouritesLoading ? null : <RenderFavourites favourites={this.state.favourites}/>}
-                <RenderSearchHistory />
+                {this.state.searchHistoryLoading ? null : <RenderSearchHistory searchHistory={this.state.searchHistory}/>}
+
             </div>
         );
     }
