@@ -13,9 +13,10 @@ export default class ResultsIndex extends React.Component {
         this.state={
             results: "" || TestData,
             loading: true,
-            search: this.props.search,
+            searchkeywords: this.props.searchkeywords,
             language: this.props.language,
             framework: this.props.framework,
+            searchparameter: this.props.searchparameter,
             user: this.props.user,
             showFrameworkDropdown: false,
         }
@@ -35,11 +36,11 @@ export default class ResultsIndex extends React.Component {
 
     stackOverflowURLCondition(){
         if(this.state.language === "empty" && this.state.framework === "empty") {
-            return `https://api.stackexchange.com/2.3/search?order=desc&sort=votes&intitle=${this.state.search}&site=stackoverflow`
+            return `https://api.stackexchange.com/2.3/search?order=desc&sort=votes&intitle=${this.state.searchkeywords}&site=stackoverflow`
         } else if(this.state.language !== "empty" && this.state.framework === "empty") {
-            return `https://api.stackexchange.com/2.3/search?order=desc&sort=votes&tagged=${this.state.language}&intitle=${this.state.search}&site=stackoverflow`
+            return `https://api.stackexchange.com/2.3/search?order=desc&sort=votes&tagged=${this.state.language}&intitle=${this.state.searchkeywords}&site=stackoverflow`
         } else {
-           return `https://api.stackexchange.com/2.3/search?order=desc&sort=votes&tagged=${this.state.language}%3B${this.state.framework}&intitle=${this.state.search}&site=stackoverflow`
+           return `https://api.stackexchange.com/2.3/search?order=desc&sort=votes&tagged=${this.state.language}%3B${this.state.framework}&intitle=${this.state.searchkeywords}&site=stackoverflow`
         }
     }
 

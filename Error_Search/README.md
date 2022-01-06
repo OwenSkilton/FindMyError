@@ -10,10 +10,10 @@
 
 * Login / signup page CSS
 
-* Spring entities + get mapping to handle persisting search history
+* Upvote???
 
 * Cucumber testing
 
-* Upvote for posts?
+* Api search for other sights????? (GeekforGeek, redhat etc)
 
 * Google custom search engine for documentation

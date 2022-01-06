@@ -1,7 +1,7 @@
 import React, {Component, useState} from "react"
-import {Link} from "react-router-dom";
 import RenderDropdownsSearchPage from './RenderDropdownsSearchPage'
 import {dropdownValuesToRenderFrameworkDropdown} from '../helpers/dropdownValuesToRenderFrameworkDropdown'
+import RenderToggleSearchOrDocumentation from "./RenderToggleSearchOrDocumentation";
 
 export default class SearchPage extends Component {
 
@@ -9,11 +9,12 @@ export default class SearchPage extends Component {
         super(props);
         this.state = {
             user: this.props.user,
-            search: "",
+            searchkeywords: "",
             language: "empty",
             framework: "empty",
             showFrameworkDropdown: false,
         }
+        this.toggleTypeOfSearchParameterValue = React.createRef();
         this.updateLanguage = this.updateLanguage.bind(this)
         this.updateFramework = this.updateFramework.bind(this)
         this.postSearchHistory = this.postSearchHistory.bind(this)
@@ -67,7 +68,7 @@ export default class SearchPage extends Component {
 
     async handleSubmit (e){
         e.preventDefault()
-        const url = `http://localhost:3000/resultsPageArguments?language=${this.state.language}&search=${this.state.search}&framework=${this.state.framework}`
+        const url = `http://localhost:3000/resultsPageArguments?language=${this.state.language}&searchkeywords=${this.state.searchkeywords}&framework=${this.state.framework}&searchparameter=${this.toggleTypeOfSearchParameterValue.current.state.typeOfSearchParameter}`
         await fetch(url).then(()=>this.postSearchHistory())
         .finally(setTimeout(() => {window.location.assign('/results/ResultsPage')}, 100))
     }
@@ -76,14 +77,13 @@ export default class SearchPage extends Component {
 
     postSearchHistoryURLCalculator(email){
         if(this.state.language === "empty"&& this.state.framework ==="empty"){
-            return `http://localhost:8080/backend/postsearchhistory/${email}/${this.state.search}`
+            return `http://localhost:8080/backend/postsearchhistory/${email}/${this.state.searchkeywords}`
         } else if(this.state.language !== "empty" && this.state.framework === "empty") {
-            return `http://localhost:8080/backend/postsearchhistory/${email}/${this.state.search}/${this.state.language}`
+            return `http://localhost:8080/backend/postsearchhistory/${email}/${this.state.searchkeywords}/${this.state.language}`
         } else {
-            return `http://localhost:8080/backend/postsearchhistory/${email}/${this.state.search}/${this.state.language}/${this.state.framework}`
+            return `http://localhost:8080/backend/postsearchhistory/${email}/${this.state.searchkeywords}/${this.state.language}/${this.state.framework}`
         }
     }
-
 
     render() {
         return (
@@ -96,14 +96,15 @@ export default class SearchPage extends Component {
                             name={"SearchBar"}
                             placeholder={"search"}
                             className={"search__input"}
-                            value={this.state.search}
+                            value={this.state.searchkeywords}
                             onChange={(e)=>this.setState({
-                                search: e.target.value
+                                searchkeywords: e.target.value
                             })}
                         />
                         <button className={"search-button"} type="submit"><i className="fa fa-search"></i></button>
                     </div>
                 </form>
+                <RenderToggleSearchOrDocumentation ref={this.toggleTypeOfSearchParameterValue}/>
                 <RenderDropdownsSearchPage
                     language={this.state.language}
                     framework={this.state.framework}

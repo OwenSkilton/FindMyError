@@ -1,3 +1,5 @@
+// Search button on search bar
+
 .search-button{
   position: absolute;
   padding: 9px 16px;
@@ -11,6 +13,81 @@
   border-bottom: 1px solid #575756;
   border-left: transparent;
 }
+
+// Search page button toggle area
+
+.search-page-toggle-search-button{
+  padding-top: 3rem;
+  margin: 3rem;
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.toggle-button input{
+  display: none;
+}
+.toggle-button{
+  position: relative;
+  display: inline-block;
+  width: 90px;
+  height: 30px;
+}
+.slider{
+  background-color: grey;
+  opacity: 20%;
+  border: 1px solid #aaa;
+  border-radius: 45px;
+  cursor: pointer;
+  transition: all 0.4s;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.slider:before{
+  margin-left: 2px;
+  content: "";
+  width: 24px;
+  height: 24px;
+  background-color: #eee;
+  border-radius: 50%;
+  position: absolute;
+  transition: all 0.4s;
+  top: 2px;
+  left: 2px;
+}
+input:checked + .slider:before{
+  transform: translateX(54px);
+}
+input:checked + .slider{
+  background-color: #357bf6;
+  opacity: 100%;
+}
+
+.toggle-button-label{
+  margin-left: 1rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Search page dropdown area
 
 .search-page-dropdowns{
   margin: 3rem;

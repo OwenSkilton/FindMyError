@@ -4,8 +4,9 @@ class SearchController < ApplicationController
     @user = current_user
   end
   def get_params
-    session[:search] = params["search"]
+    session[:searchkeywords] = params["searchkeywords"]
     session[:language] = params["language"]
     session[:framework] = params["framework"]
+    session[:searchparameter] = params["searchparameter"]
   end
 end
