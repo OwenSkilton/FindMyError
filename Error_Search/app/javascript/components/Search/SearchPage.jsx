@@ -77,11 +77,11 @@ export default class SearchPage extends Component {
 
     postSearchHistoryURLCalculator(email){
         if(this.state.language === "empty"&& this.state.framework ==="empty"){
-            return `http://localhost:8080/backend/postsearchhistory/${email}/${this.state.searchkeywords}`
+            return `http://localhost:8080/backend/postsearchhistory/${email}/${this.state.searchkeywords}/${this.toggleTypeOfSearchParameterValue.current.state.typeOfSearchParameter}`
         } else if(this.state.language !== "empty" && this.state.framework === "empty") {
-            return `http://localhost:8080/backend/postsearchhistory/${email}/${this.state.searchkeywords}/${this.state.language}`
+            return `http://localhost:8080/backend/postsearchhistory/${email}/${this.state.searchkeywords}/${this.state.language}/${this.toggleTypeOfSearchParameterValue.current.state.typeOfSearchParameter}`
         } else {
-            return `http://localhost:8080/backend/postsearchhistory/${email}/${this.state.searchkeywords}/${this.state.language}/${this.state.framework}`
+            return `http://localhost:8080/backend/postsearchhistory/${email}/${this.state.searchkeywords}/${this.state.language}/${this.state.framework}/${this.toggleTypeOfSearchParameterValue.current.state.typeOfSearchParameter}`
         }
     }
 

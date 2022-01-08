@@ -4,19 +4,19 @@ class RenderToggleSearchOrDocumentation extends Component {
     constructor(props) {
         super(props);
         this.state={
-            typeOfSearchParameter: "Error Message"
+            typeOfSearchParameter: "Error_Message"
         }
         this.toggleTypeOfSearchParameterValue = this.toggleTypeOfSearchParameterValue.bind(this)
     }
 
     toggleTypeOfSearchParameterValue(){
-        if (this.state.typeOfSearchParameter === "Error Message") {
+        if (this.state.typeOfSearchParameter === "Error_Message") {
             this.setState({
                 typeOfSearchParameter: "Documentation"
             })
         } else {
             this.setState({
-                typeOfSearchParameter: "Error Message"
+                typeOfSearchParameter: "Error_Message"
             })
         }
     }
@@ -28,7 +28,7 @@ class RenderToggleSearchOrDocumentation extends Component {
                     <input onClick={this.toggleTypeOfSearchParameterValue} type="checkbox"/>
                     <span className={"slider"}></span>
                 </label>
-                <label className={"toggle-button-label"}>{this.state.typeOfSearchParameter}</label>
+                <label className={"toggle-button-label"}>{this.state.typeOfSearchParameter === "Error_Message" ? "Error Message" : "Documentation"}</label>
             </div>
         );
     }
