@@ -5,6 +5,8 @@ import RenderToggleSearchOrDocumentation from "./RenderToggleSearchOrDocumentati
 
 export default class SearchPage extends Component {
 
+    // CONSTRUCTOR
+
     constructor(props) {
         super(props);
         this.state = {
@@ -23,6 +25,8 @@ export default class SearchPage extends Component {
         this.convertAtSymbolInEmail=this.convertAtSymbolInEmail.bind(this)
         this.postSearchHistoryURLCalculator=this.postSearchHistoryURLCalculator.bind(this)
     }
+
+    // HELPER FUNCTIONS
 
     updateLanguage(language){
         this.setState({
@@ -51,6 +55,9 @@ export default class SearchPage extends Component {
             showFrameworkDropdown: condition
         })
     }
+    convertAtSymbolInEmail(userEmail){return userEmail.replace(/@/g, "%40")}
+
+    // EVENT HANDLER FUNCTIONS
 
     async postSearchHistory() {
         const email = this.convertAtSymbolInEmail(this.state.user.email)
@@ -63,7 +70,6 @@ export default class SearchPage extends Component {
                 }
             })
         const dataJson = await data.json();
-        console.log(dataJson)
     }
 
     async handleSubmit (e){
@@ -72,8 +78,6 @@ export default class SearchPage extends Component {
         await fetch(url).then(()=>this.postSearchHistory())
         .finally(setTimeout(() => {window.location.assign('/results/ResultsPage')}, 100))
     }
-
-    convertAtSymbolInEmail(userEmail){return userEmail.replace(/@/g, "%40")}
 
     postSearchHistoryURLCalculator(email){
         if(this.state.language === "empty"&& this.state.framework ==="empty"){

@@ -14,9 +14,7 @@
 
 * Google custom search engine for documentation (add documentation sites + edit results page to render different results based on results structure)
 
-* Search area on results page include search button (refresh page and update ruby values??) and extra search params
-
-* update search history to time & date search was performed
+* Search area on results page extra search params
 
 * Add to languages and frameworks to include more options
 
@@ -24,3 +22,4 @@
 
 * Profile page search history CSS, not sure best structure just a list and time performed?
 
+* Add to results page the ranking of the post (rating or whatever its called?)

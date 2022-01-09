@@ -45,14 +45,27 @@ export default class ProfileHome extends Component {
     }
 
     render() {
-        console.log(this.state.favourites)
-        console.log(this.state.searchHistory)
         return (
             <div className={"profile-page"}>
                 <RenderProfilePage user={this.state.user}/>
-                {this.state.favouritesLoading ? null : <RenderFavourites favourites={this.state.favourites}/>}
-                {this.state.searchHistoryLoading ? null : <RenderSearchHistory searchHistory={this.state.searchHistory}/>}
 
+                {this.state.favouritesLoading ? null :
+                    <div className={"favourites-section"}>
+                        <h1 className={"title"}>Favourited results: </h1>
+                        {this.state.favourites.map((favourite)=> {
+                            return <RenderFavourites key={favourite.postid.postid} favourite={favourite}/>
+                        })}
+                    </div>
+                }
+
+                {this.state.searchHistoryLoading ? null :
+                    <div className={"search-history-section"}>
+                        <h1 className={"title"}>Search History: </h1>
+                        {this.state.searchHistory.map((historyItem)=>{
+                            return <RenderSearchHistory key={historyItem.searchhistoryid} searchHistoryItem={historyItem}/>
+                        })}
+                    </div>
+                }
             </div>
         );
     }

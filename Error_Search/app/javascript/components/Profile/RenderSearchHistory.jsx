@@ -1,12 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 
-const RenderSearchHistory = (searchHistory) => {
+const RenderSearchHistory = (searchHistoryItem) => {
+    const [historyItem, setHistoryItem] = useState(searchHistoryItem.searchHistoryItem)
+
     return (
-        <div className={"search-history-section"}>
-            <h1 className={"title"}>Search History: </h1>
-            {searchHistory.searchHistory.map((historyItem)=>{
-                return <a key={historyItem.searchhistoryid}> {historyItem.keywords} {historyItem.searchParameter} {historyItem.date} </a>
-            })}
+        <div>
+            {console.log(historyItem)}
+            {historyItem.date} {historyItem.keywords} {historyItem.language} {historyItem.framework}
         </div>
     );
 };

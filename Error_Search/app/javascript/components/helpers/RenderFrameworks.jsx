@@ -39,6 +39,19 @@ const renderFrameworks = ({language, updateFramework}) =>{
                         <option value="python-3.x">Python-3.x</option>
                     </>
                 )
+            case "java":
+                return(
+                    <>
+                        <option value="spring">Spring</option>
+                        <option value="spring-boot">Spring Boot</option>
+                    </>
+                )
+            case "php":
+                return(
+                    <>
+                        <option value="laravel">Laravel</option>
+                    </>
+                )
             default:
                 return null
         }

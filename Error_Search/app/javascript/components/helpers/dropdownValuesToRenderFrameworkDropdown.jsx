@@ -1,1 +1,1 @@
-export const dropdownValuesToRenderFrameworkDropdown = ["ruby", "javascript","sql","asp.net","python",]
+export const dropdownValuesToRenderFrameworkDropdown = ["ruby", "javascript","sql","asp.net","python","java","php"]

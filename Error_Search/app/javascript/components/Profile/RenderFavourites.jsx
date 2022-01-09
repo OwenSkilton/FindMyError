@@ -1,13 +1,25 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 
-const RenderFavourites = (favourites) => {
+const RenderFavourites = (favourite) => {
+    const [favouritedSearch, setFavouritedSearch] = useState("")
+    const [favouriteID, setFavouriteID] = useState(favourite.favourite.postid.postid)
+
+    useEffect(()=>{
+        getFavouritedPostFromStackOverflowAPI();
+    }, [])
+
+    const getFavouritedPostFromStackOverflowAPI = async () => {
+        const url = `https://api.stackexchange.com/2.3/questions/${favouriteID}?order=desc&sort=activity&site=stackoverflow`;
+        const data = await fetch(url)
+        const dataJson = await data.json();
+        setFavouritedSearch(dataJson.items[0]);
+    }
+
     return (
-        <div className={"favourites-section"}>
-            <h1 className={"title"}>Favourited results: </h1>
-            {favourites.favourites.map((favourite)=>{
-                return <a key={favourite.postid.postid}> {favourite.postid.postid } </a>
-            })}
+        <div>
+            {favouritedSearch.question_id} {favourite.favourite.date}
         </div>
+
     );
 };
 

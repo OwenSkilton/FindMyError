@@ -1,12 +1,14 @@
 import React, {useEffect, useState} from 'react';
-import PropTypes from 'prop-types'
 import ResultsBody from "./ResultsBody";
 import ResultsPageSearchCriteria from "./ResultsPageSearchCriteria";
 import renderLoading from "./Loading";
 import FilterButtons from "./FilterButtons"
 import {TestData} from '../helpers/TestData'
+import {dropdownValuesToRenderFrameworkDropdown} from "../helpers/dropdownValuesToRenderFrameworkDropdown";
 
 export default class ResultsIndex extends React.Component {
+
+    // CONSTRUCTOR
 
     constructor(props) {
         super(props);
@@ -21,10 +23,14 @@ export default class ResultsIndex extends React.Component {
             showFrameworkDropdown: false,
         }
         this.numberOfResults=this.numberOfResults.bind(this)
+        this.prepopulateSearchParams=this.prepopulateSearchParams.bind(this)
         this.renderResults=this.renderResults.bind(this)
         this.setLanguage=this.setLanguage.bind(this)
         this.setFramework=this.setFramework.bind(this)
         this.setLoading=this.setLoading.bind(this)
+        this.setSearchKeywords=this.setSearchKeywords.bind(this)
+        // this.handleSubmit=this.handleSubmit.bind(this)
+        // this.postSearchHistory=this.postSearchHistory.bind(this)
         this.fetchStackOverflowAPI=this.fetchStackOverflowAPI.bind(this)
         this.stackOverflowURLCondition=this.stackOverflowURLCondition.bind(this)
         this.fetchDocumentationAPI=this.fetchDocumentationAPI.bind(this)
@@ -32,19 +38,35 @@ export default class ResultsIndex extends React.Component {
         this.setShowFrameworkDropdown=this.setShowFrameworkDropdown.bind(this)
     }
 
+    // First Render Functions
+
     componentDidMount() {
         if (this.state.searchParameter === "Error_Message") {
             this.fetchStackOverflowAPI().finally(() => this.setState({loading: false}));
         } else if (this.state.searchParameter === "Documentation"){
             this.fetchDocumentationAPI().finally(() => this.setState({loading: false}));
         }
+        this.prepopulateSearchParams()
     }
+
+    prepopulateSearchParams() {
+        document.getElementById("language-dropdown").value = this.state.language
+        if(dropdownValuesToRenderFrameworkDropdown.indexOf( this.state.language) > -1){
+            this.setState({
+                showFrameworkDropdown: true
+            });
+            (setTimeout(() => {document.getElementById("framework-dropdown").value = this.state.framework}, 10))
+        }
+    }
+
+    // API FUNCTIONS
 
     async fetchStackOverflowAPI() {
         const url = this.stackOverflowURLCondition();
         const data = await fetch(url)
         const dataJson = await data.json();
         this.setState({results: dataJson})
+        console.log(url)
     }
 
     async fetchDocumentationAPI(){
@@ -56,6 +78,8 @@ export default class ResultsIndex extends React.Component {
         console.log(this.state.results)
         // this.setState({results: dataJson})
     }
+
+    // API HELPERS
 
     stackOverflowURLCondition(){
         if(this.state.language === "empty" && this.state.framework === "empty") {
@@ -76,6 +100,36 @@ export default class ResultsIndex extends React.Component {
             return `https://www.googleapis.com/customsearch/v1?key=AIzaSyA1OlOX-IBrQfVF99eRpracnGPz-QWoSOo&cx=21730bc2f33f692cb&q=${this.state.framework}%20${this.state.searchKeywords}`
         }
     }
+
+    // HELPER FUNCTIONS
+
+    setLanguage = (language) => {
+        this.setState({
+            language: language
+        })
+    }
+    setFramework = (framework) => {
+        this.setState({
+            framework: framework
+        })
+    }
+    setLoading = (condition) => {
+        this.setState({
+            loading: condition
+        })
+    }
+    setShowFrameworkDropdown = (condition) => {
+        this.setState({
+            showFrameworkDropdown: condition
+        })
+    }
+    setSearchKeywords = (searchKeywords) =>{
+        this.setState({
+            searchKeywords: searchKeywords
+        })
+    }
+
+    // RENDER FUNCTIONS
 
     numberOfResults = () => {
         if (this.state.results.items.length >= 30) {
@@ -103,27 +157,6 @@ export default class ResultsIndex extends React.Component {
         )
     }
 
-    setLanguage = (language) => {
-        this.setState({
-            language: language
-        })
-    }
-    setFramework = (framework) => {
-        this.setState({
-            framework: framework
-        })
-    }
-    setLoading = (condition) => {
-        this.setState({
-            loading: condition
-        })
-    }
-    setShowFrameworkDropdown = (condition) => {
-        this.setState({
-            showFrameworkDropdown: condition
-        })
-    }
-
     render() {
         return (
             <>
@@ -136,6 +169,10 @@ export default class ResultsIndex extends React.Component {
                         setFramework={this.setFramework}
                         showFrameworkDropdown={this.state.showFrameworkDropdown}
                         setShowFrameworkDropdown={this.setShowFrameworkDropdown}
+                        searchKeywords={this.state.searchKeywords}
+                        setSearchKeywords={this.setSearchKeywords}
+                        searchParameter = {this.state.searchParameter}
+                        user = {this.state.user}
                     />
                     {this.state.loading ? renderLoading() : this.renderResults()}
                 </div>
