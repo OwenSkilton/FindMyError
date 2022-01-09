@@ -27,10 +27,7 @@ export default class ResultsIndex extends React.Component {
         this.renderResults=this.renderResults.bind(this)
         this.setLanguage=this.setLanguage.bind(this)
         this.setFramework=this.setFramework.bind(this)
-        this.setLoading=this.setLoading.bind(this)
         this.setSearchKeywords=this.setSearchKeywords.bind(this)
-        // this.handleSubmit=this.handleSubmit.bind(this)
-        // this.postSearchHistory=this.postSearchHistory.bind(this)
         this.fetchStackOverflowAPI=this.fetchStackOverflowAPI.bind(this)
         this.stackOverflowURLCondition=this.stackOverflowURLCondition.bind(this)
         this.fetchDocumentationAPI=this.fetchDocumentationAPI.bind(this)
@@ -70,13 +67,20 @@ export default class ResultsIndex extends React.Component {
     }
 
     async fetchDocumentationAPI(){
-        const url = this.documentationAPIURLCondition();
-        const data = await fetch(url)
-        const dataJson = await data.json();
-        console.log(url)
-        console.log(dataJson)
-        console.log(this.state.results)
+        for (let i = 1; i < 101; i+=10) {
+            const url = this.documentationAPIURLCondition(i);
+            const data = await fetch(url)
+            const dataJson = await data.json();
+            console.log(url)
+            console.log(dataJson)
+        }
+
         // this.setState({results: dataJson})
+        // console.log(this.state.results)
+
+        // https://stackoverflow.com/questions/16925762/getting-more-than-10-results-by-google-custom-search-api-v1-in-java
+        // to get more than 10 results add the start param onto URL and start from 11 or 21 or 31 etc.
+        // For loop that preforms multiple searches
     }
 
     // API HELPERS
@@ -91,13 +95,13 @@ export default class ResultsIndex extends React.Component {
         }
     }
 
-    documentationAPIURLCondition(){
+    documentationAPIURLCondition(startNumber){
         if(this.state.language === "empty" && this.state.framework === "empty") {
-            return `https://www.googleapis.com/customsearch/v1?key=AIzaSyA1OlOX-IBrQfVF99eRpracnGPz-QWoSOo&cx=21730bc2f33f692cb&q=${this.state.searchKeywords}`
+            return `https://www.googleapis.com/customsearch/v1?key=AIzaSyA1OlOX-IBrQfVF99eRpracnGPz-QWoSOo&cx=21730bc2f33f692cb&q=${this.state.searchKeywords}&start=${startNumber}`
         } else if(this.state.language !== "empty" && this.state.framework === "empty") {
-            return `https://www.googleapis.com/customsearch/v1?key=AIzaSyA1OlOX-IBrQfVF99eRpracnGPz-QWoSOo&cx=21730bc2f33f692cb&q=${this.state.language}%20${this.state.searchKeywords}`
+            return `https://www.googleapis.com/customsearch/v1?key=AIzaSyA1OlOX-IBrQfVF99eRpracnGPz-QWoSOo&cx=21730bc2f33f692cb&q=${this.state.language}%20${this.state.searchKeywords}&start=${startNumber}`
         } else {
-            return `https://www.googleapis.com/customsearch/v1?key=AIzaSyA1OlOX-IBrQfVF99eRpracnGPz-QWoSOo&cx=21730bc2f33f692cb&q=${this.state.framework}%20${this.state.searchKeywords}`
+            return `https://www.googleapis.com/customsearch/v1?key=AIzaSyA1OlOX-IBrQfVF99eRpracnGPz-QWoSOo&cx=21730bc2f33f692cb&q=${this.state.framework}%20${this.state.searchKeywords}&start=${startNumber}`
         }
     }
 
@@ -111,11 +115,6 @@ export default class ResultsIndex extends React.Component {
     setFramework = (framework) => {
         this.setState({
             framework: framework
-        })
-    }
-    setLoading = (condition) => {
-        this.setState({
-            loading: condition
         })
     }
     setShowFrameworkDropdown = (condition) => {

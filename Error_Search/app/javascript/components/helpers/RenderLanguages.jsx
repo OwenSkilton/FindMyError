@@ -23,6 +23,7 @@ const renderLanguages = ({updateLanguage}) =>{
                     <option value="java">Java</option>
                     <option value="javascript">JavaScript</option>
                     <option value="json">JSON</option>
+                    <option value="Kotlin">Kotlin</option>
                     <option value="objective-c">Objective-C</option>
                     <option value="php">PHP</option>
                     <option value="python">Python</option>

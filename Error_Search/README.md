@@ -14,7 +14,7 @@
 
 * Google custom search engine for documentation (add documentation sites + edit results page to render different results based on results structure)
 
-* Search area on results page extra search params
+* Search area on results page extra search params???
 
 * Add to languages and frameworks to include more options
 
