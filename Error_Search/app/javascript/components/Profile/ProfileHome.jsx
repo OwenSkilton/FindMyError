@@ -13,19 +13,31 @@ export default class ProfileHome extends Component {
             favourites: "",
             searchHistory: ""
         }
-        this.findFavouritedPosts = this.findFavouritedPosts.bind(this)
+        this.findForumFavouritedPosts = this.findForumFavouritedPosts.bind(this)
+        this.findDocumentationFavouritedPosts = this.findDocumentationFavouritedPosts.bind(this)
         this.ConvertAtSymbolInEmail = this.ConvertAtSymbolInEmail.bind(this)
     }
 
     componentDidMount() {
-        this.findFavouritedPosts()
+        this.findForumFavouritedPosts()
+        this.findDocumentationFavouritedPosts()
         this.findSearchHistory()
     }
 
     ConvertAtSymbolInEmail(userEmail){return userEmail.replace(/@/g, "%40")}
-    async findFavouritedPosts() {
+    async findForumFavouritedPosts() {
         const email = this.ConvertAtSymbolInEmail(this.state.user.email)
-        const url = `http://localhost:8080/backend/finduserfavourites/${email}`;
+        const url = `http://localhost:8080/backend/finduserforumfavourites/${email}`;
+        const data = await fetch(url)
+        const dataJson = await data.json();
+        this.setState({
+            favouritesLoading: false,
+            favourites: dataJson
+        })
+    }
+    async findDocumentationFavouritedPosts() {
+        const email = this.ConvertAtSymbolInEmail(this.state.user.email)
+        const url = `http://localhost:8080/backend/finduserdocumentationfavourites/${email}`;
         const data = await fetch(url)
         const dataJson = await data.json();
         this.setState({

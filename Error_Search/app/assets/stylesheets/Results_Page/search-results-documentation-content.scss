@@ -1,0 +1,75 @@
+.documentation-results-container {
+  width: 100%;
+  max-width: var(--max-width);
+  box-sizing: border-box;
+  margin: 1rem auto 1rem 1rem;
+}
+
+.documentation-search-results-body{
+  display: block;
+}
+
+.documentation-singular-result {
+  margin: 1rem auto 0;
+  padding: 1rem;
+  border: 2px solid black;
+  box-sizing: inherit;
+  display: flex;
+}
+
+.documentation-result-inner-content{
+  width: 100%;
+  padding-left: 1rem;
+  display: inline;
+  box-sizing: inherit;
+}
+
+.cse-image{
+  margin-right: 0.2rem;
+  margin-left: 0.2rem;
+  margin-bottom: 0.2rem;
+  position: relative;
+  img{
+    object-fit: cover;
+    display: block;
+    height: 35px;
+    width: 35px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+  }
+}
+
+.documentation-title{
+  font-weight: bold;
+  font-size: 22px;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.documentation-snippet{
+  margin-bottom: 1rem;
+}
+
+
+// Icons section
+
+.documentation-icons{
+  width: 30px;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.bi-star:hover, .fa-star:hover{
+  cursor: pointer;
+}
+
+.favourite{
+  margin-bottom: 1px;
+}
+
+.checked{
+  color: orange;
+  padding-bottom: 8px;
+}

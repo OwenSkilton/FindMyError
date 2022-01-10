@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 
-const ResultsBody = ({tags, question_id, title, link, user}) => {
+const ForumResultsBody = ({tags, question_id, title, link, user}) => {
     const [showFavouritedStar ,setShowFavouritedStar] = useState(false)
     const [response, setResponse] = useState("null")
 
@@ -18,7 +18,7 @@ const ResultsBody = ({tags, question_id, title, link, user}) => {
     const postFavourite = async (question_id) => {
         setShowFavouritedStar(!showFavouritedStar)
         const email = ConvertAtSymbolInEmail(user.email)
-        const url = `http://localhost:8080/backend/postfavourite/${email}/${question_id}`;
+        const url = `http://localhost:8080/backend/postforumfavourite/${email}/${question_id}`;
         const data = await fetch(url,
             {
                 method: 'POST',
@@ -32,7 +32,7 @@ const ResultsBody = ({tags, question_id, title, link, user}) => {
     const deleteFavourite = async (question_id) => {
         setShowFavouritedStar(!showFavouritedStar)
         const email = ConvertAtSymbolInEmail(user.email)
-        const url = `http://localhost:8080/backend/deletefavourite/${email}/${question_id}`;
+        const url = `http://localhost:8080/backend/deleteforumfavourite/${email}/${question_id}`;
         await fetch(url,
             {
                 method: 'Delete',
@@ -43,11 +43,12 @@ const ResultsBody = ({tags, question_id, title, link, user}) => {
     }
     const checkIfPostIsFavouriteToUser = async () => {
         const email = ConvertAtSymbolInEmail(user.email)
-        const url = `http://localhost:8080/backend/findfavourite/${email}/${question_id}`;
+        const url = `http://localhost:8080/backend/findforumfavourite/${email}/${question_id}`;
         const data = await fetch(url)
         const dataJson = await data.json();
-        dataJson.favouritesID ? setShowFavouritedStar(!showFavouritedStar) : null
-        return dataJson.favouritesID ? dataJson : null
+        console.log(dataJson)
+        dataJson.forumFavouritesID ? setShowFavouritedStar(!showFavouritedStar) : null
+        return dataJson.forumFavouritesID ? dataJson : null
     }
 
     return (
@@ -86,4 +87,4 @@ const ResultsBody = ({tags, question_id, title, link, user}) => {
     );
 };
 
-export default ResultsBody;
+export default ForumResultsBody;

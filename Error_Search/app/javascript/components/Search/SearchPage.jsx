@@ -74,9 +74,10 @@ export default class SearchPage extends Component {
 
     async handleSubmit (e){
         e.preventDefault()
+        const windowLocationURL = this.toggleTypeOfSearchParameterValue.current.state.typeOfSearchParameter === "Error_Message" ? "/results/ResultsPageErrorForum" : "/results/ResultsPageDocumentation"
         const url = `http://localhost:3000/resultsPageArguments?language=${this.state.language}&searchkeywords=${this.state.searchkeywords}&framework=${this.state.framework}&searchparameter=${this.toggleTypeOfSearchParameterValue.current.state.typeOfSearchParameter}`
         await fetch(url).then(()=>this.postSearchHistory())
-        .finally(setTimeout(() => {window.location.assign('/results/ResultsPage')}, 100))
+        .finally(setTimeout(() => {window.location.assign(windowLocationURL)}, 100))
     }
 
     postSearchHistoryURLCalculator(email){
