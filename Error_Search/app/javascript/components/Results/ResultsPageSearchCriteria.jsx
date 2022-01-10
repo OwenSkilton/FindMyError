@@ -21,10 +21,11 @@ const ResultsPageSearchCriteria = ({language, setLanguage, framework, setFramewo
 
      const handleSubmit = async (e) => {
         e.preventDefault()
-        const url = `http://localhost:3000/resultsPageArguments?language=${language}&searchkeywords=${searchKeywords}&framework=${framework}&searchparameter=${searchParameter}`
+         const windowLocationURL = searchParameter === "Error_Message" ? "/results/ResultsPageErrorForum" : "/results/ResultsPageDocumentation"
+         const url = `http://localhost:3000/resultsPageArguments?language=${language}&searchkeywords=${searchKeywords}&framework=${framework}&searchparameter=${searchParameter}`
         await fetch(url).then(() => postSearchHistory())
             .finally(setTimeout(() => {
-                window.location.assign('/results/ResultsPage')
+                window.location.assign(windowLocationURL)
             }, 100))
     }
 
@@ -59,7 +60,7 @@ const ResultsPageSearchCriteria = ({language, setLanguage, framework, setFramewo
             <ol>
                 <li>
                     <h2 style={{paddingBottom: "1rem"}} className={"title"}>Refine Search:</h2>
-                    <h4 style={{opacity: "80%", paddingBottom: "2rem"}}> Searching via: <br/>{searchParameter === "Error_Message" ? "Error Message": "Documentation"}</h4>
+                    <h4 style={{opacity: "80%", paddingBottom: "2rem"}}> Searching via: <br/>{searchParameter === "Error_Message" ? "Error Messages": "Documentation"}</h4>
                     <form onSubmit={(e)=>handleSubmit(e)}>
                         <div >
                             <input

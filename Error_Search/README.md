@@ -14,6 +14,8 @@
 
 * Google custom search engine for documentation (add documentation sites + edit results page to render different results based on results structure)
 
+    * Edit ResultsDocumentationIndex so the next search is only performed on the load more button
+
 * Search area on results page extra search params???
 
 * Add to languages and frameworks to include more options
