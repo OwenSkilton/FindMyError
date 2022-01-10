@@ -44,6 +44,9 @@ const renderFrameworks = ({language, updateFramework}) =>{
                     <>
                         <option value="spring">Spring</option>
                         <option value="spring-boot">Spring Boot</option>
+                        <option value="spring-mvc">Spring-mvc</option>
+                        <option value="hibernate">Hibernate</option>
+                        <option value="jpa">JPA</option>
                     </>
                 )
             case "php":

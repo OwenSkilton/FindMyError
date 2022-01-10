@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 
-const RenderFavourites = (favourite) => {
+const RenderForumFavourites = (favourite) => {
     const [favouritedSearch, setFavouritedSearch] = useState("")
     const [favouriteID, setFavouriteID] = useState(favourite.favourite.postid.postid)
 
@@ -23,4 +23,4 @@ const RenderFavourites = (favourite) => {
     );
 };
 
-export default RenderFavourites;
+export default RenderForumFavourites;

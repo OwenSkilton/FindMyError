@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 
-const ForumResultsBody = ({tags, question_id, title, link, user}) => {
+const ForumResultsBody = ({tags, question_id, title, link, user, score}) => {
     const [showFavouritedStar ,setShowFavouritedStar] = useState(false)
     const [response, setResponse] = useState("null")
 
@@ -54,19 +54,16 @@ const ForumResultsBody = ({tags, question_id, title, link, user}) => {
     return (
         <>
             <div className={"results"}>
-                <div className="icons">
+                <div className="icons-and-score">
                     <span>
-                        <div>
-                            <i className="bi bi-arrow-up-square"/>
-                        </div>
                         <div className={"favourite"}>
                         {showFavouritedStar ?
                             <i className="fa fa-star checked" onClick={() => deleteFavourite(question_id)}/> :
                             <i className="bi bi-star" onClick={() => postFavourite(question_id)}/>
                         }
                         </div>
-                        <div>
-                            <i className="bi bi-arrow-down-square"/>
+                        <div className={"forum-post-rating"}>
+                            {score}
                         </div>
                     </span>
                 </div>

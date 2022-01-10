@@ -43,7 +43,6 @@ export default class SearchPage extends Component {
                 showFrameworkDropdown: false,
             })
         }
-        console.log(this.state.language)
     }
     updateFramework(framework){
         this.setState({

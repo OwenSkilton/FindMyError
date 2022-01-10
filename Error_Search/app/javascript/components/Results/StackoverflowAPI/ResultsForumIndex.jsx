@@ -115,6 +115,7 @@ export default class ResultsForumIndex extends React.Component {
                     <FilterButtons/>
                     <div className={"search-results-body"}>
                         {resultItems.map((result) => {
+                            {console.log(result)}
                             return <ForumResultsBody key={result.question_id} {...result} user={user} />
                         })}
                     </div>
@@ -126,7 +127,6 @@ export default class ResultsForumIndex extends React.Component {
     render() {
         return (
             <>
-                <button onClick={()=>{console.log(this.state)}}>State </button>
                 <div className={"results-page-search-criteria"}>
                     <ResultsPageSearchCriteria
                         language={this.state.language}

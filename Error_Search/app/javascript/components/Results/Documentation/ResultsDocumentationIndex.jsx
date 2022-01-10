@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import DocumentationResultsBody from "./DocumentationResultsBody";
 import ResultsPageSearchCriteria from "../ResultsPageSearchCriteria";
 import renderLoading from "../Loading";
@@ -13,7 +13,7 @@ export default class ResultsDocumentationIndex extends React.Component {
     constructor(props) {
         super(props);
         this.state={
-            results: "" || TestDataDocumentation,
+            results: [] || TestDataDocumentation,
             loading: true,
             searchKeywords: this.props.searchkeywords,
             language: this.props.language,
@@ -21,6 +21,7 @@ export default class ResultsDocumentationIndex extends React.Component {
             searchParameter: this.props.searchparameter,
             user: this.props.user,
             showFrameworkDropdown: false,
+            resultCounter: 1
         }
         this.prepopulateSearchParams=this.prepopulateSearchParams.bind(this)
         this.renderResults=this.renderResults.bind(this)
@@ -29,14 +30,15 @@ export default class ResultsDocumentationIndex extends React.Component {
         this.setSearchKeywords=this.setSearchKeywords.bind(this)
         this.fetchDocumentationAPI=this.fetchDocumentationAPI.bind(this)
         this.documentationAPIURLCondition=this.documentationAPIURLCondition.bind(this)
+        this.loadMoreResults=this.loadMoreResults.bind(this)
         this.setShowFrameworkDropdown=this.setShowFrameworkDropdown.bind(this)
     }
 
     // First Render Functions
 
     componentDidMount() {
-        this.fetchDocumentationAPI().finally(() => this.setState({loading: false}));
         this.prepopulateSearchParams()
+        this.state.resultCounter === 1 ? this.fetchDocumentationAPI().finally(() => this.setState({loading: false})) : null
     }
 
     prepopulateSearchParams() {
@@ -52,13 +54,13 @@ export default class ResultsDocumentationIndex extends React.Component {
     // API FUNCTIONS
 
     async fetchDocumentationAPI(){
-        for (let i = 1; i < 2; i+=10) {
+        for (let i = this.state.resultCounter; i <= this.state.resultCounter; i+=10) {
             const url = this.documentationAPIURLCondition(i);
             const data = await fetch(url)
             const dataJson = await data.json();
+            console.log(dataJson)
             dataJson.items ? this.setState({results: [...this.state.results, dataJson]}) : null
         }
-        console.log(this.state.results)
         // https://stackoverflow.com/questions/16925762/getting-more-than-10-results-by-google-custom-search-api-v1-in-java
         // to get more than 10 results add the start param onto URL and start from 11 or 21 or 31 etc.
         // For loop that preforms multiple searches
@@ -74,6 +76,12 @@ export default class ResultsDocumentationIndex extends React.Component {
         } else {
             return `https://www.googleapis.com/customsearch/v1?key=AIzaSyA1OlOX-IBrQfVF99eRpracnGPz-QWoSOo&cx=21730bc2f33f692cb&q=${this.state.framework}%20${this.state.searchKeywords}&start=${startNumber}`
         }
+    }
+
+    loadMoreResults(){
+        this.setState(prevState=>{
+            return {resultCounter: prevState.resultCounter + 10}
+        }, () => {this.fetchDocumentationAPI()})
     }
 
     // HELPER FUNCTIONS
@@ -111,8 +119,15 @@ export default class ResultsDocumentationIndex extends React.Component {
                     <FilterButtons/>
                     <div className={"documentation-search-results-body"}>
                         {this.state.results.map((result) => {
-                            return <DocumentationResultsBody key={result.toString()} {...result} user={user} />
+                            return <DocumentationResultsBody
+                                key={result.toString()}
+                                {...result}
+                                user={user}
+                            />
                         })}
+                        <div className={"load-more-container"}>
+                            <button className={"load-more"} onClick={()=>this.loadMoreResults()}>Load More</button>
+                        </div>
                     </div>
                 </div>
             </>
@@ -122,7 +137,6 @@ export default class ResultsDocumentationIndex extends React.Component {
     render() {
         return (
             <>
-                <button onClick={()=>{console.log(this.state)}}>State </button>
                 <div className={"results-page-search-criteria"}>
                     <ResultsPageSearchCriteria
                         language={this.state.language}

@@ -45,6 +45,7 @@
   font-size: 22px;
   margin-bottom: 1rem;
   line-height: 1.5;
+  padding-right: 50px;
 }
 
 .documentation-snippet{
@@ -72,4 +73,29 @@
 .checked{
   color: orange;
   padding-bottom: 8px;
+}
+
+// Load more button
+
+.load-more-container{
+  position: relative;
+  margin: 1rem;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+.load-more{
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+  vertical-align: middle;
+  font-weight: 400;
+  user-select: none;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }

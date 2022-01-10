@@ -12,10 +12,6 @@
 
 * Api search for other sights????? (GeekforGeek, redhat etc)
 
-* Google custom search engine for documentation (add documentation sites + edit results page to render different results based on results structure)
-
-    * Edit ResultsDocumentationIndex so the next search is only performed on the load more button
-
 * Search area on results page extra search params???
 
 * Add to languages and frameworks to include more options
@@ -24,4 +20,4 @@
 
 * Profile page search history CSS, not sure best structure just a list and time performed?
 
-* Add to results page the ranking of the post (rating or whatever its called?)
+* no value entered in search field for both documentation and error message (alert an error?)

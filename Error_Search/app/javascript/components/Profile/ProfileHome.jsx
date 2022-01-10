@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import RenderFavourites from "./RenderFavourites";
+import RenderForumFavourites from "./RenderForumFavourites";
+import RenderDocumentationFavourites from "./RenderDocumentationFavourites";
 import RenderProfilePage from "./RenderProfilePage";
 import RenderSearchHistory from "./RenderSearchHistory"
 
@@ -7,10 +8,12 @@ export default class ProfileHome extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            favouritesLoading: true,
+            forumFavouritesLoading: true,
+            documentationFavouritesLoading: true,
             searchHistoryLoading: true,
             user: this.props.user,
-            favourites: "",
+            forumFavourites: "",
+            documentationFavourites: "",
             searchHistory: ""
         }
         this.findForumFavouritedPosts = this.findForumFavouritedPosts.bind(this)
@@ -31,8 +34,8 @@ export default class ProfileHome extends Component {
         const data = await fetch(url)
         const dataJson = await data.json();
         this.setState({
-            favouritesLoading: false,
-            favourites: dataJson
+            forumFavouritesLoading: false,
+            forumFavourites: dataJson
         })
     }
     async findDocumentationFavouritedPosts() {
@@ -41,8 +44,8 @@ export default class ProfileHome extends Component {
         const data = await fetch(url)
         const dataJson = await data.json();
         this.setState({
-            favouritesLoading: false,
-            favourites: dataJson
+            documentationFavouritesLoading: false,
+            documentationFavourites: dataJson
         })
     }
     async findSearchHistory() {
@@ -60,15 +63,19 @@ export default class ProfileHome extends Component {
         return (
             <div className={"profile-page"}>
                 <RenderProfilePage user={this.state.user}/>
-
-                {this.state.favouritesLoading ? null :
-                    <div className={"favourites-section"}>
-                        <h1 className={"title"}>Favourited results: </h1>
-                        {this.state.favourites.map((favourite)=> {
-                            return <RenderFavourites key={favourite.postid.postid} favourite={favourite}/>
+                <div className={"favourites-section"}>
+                    <h1 className={"title"}>Favourited results: </h1>
+                    <h2>Error Forum Favourites: </h2>
+                    {this.state.forumFavouritesLoading ? null :
+                        this.state.forumFavourites.map((favourite)=> {
+                            return <RenderForumFavourites key={favourite.postid.postid} favourite={favourite}/>
                         })}
-                    </div>
-                }
+                    <h2>Documentation Favourites: </h2>
+                    {this.state.documentationFavouritesLoading ? null :
+                        this.state.documentationFavourites.map((favourite)=>{
+                            return <RenderDocumentationFavourites key={favourite.documentationid.documentationid} favourite={favourite}/>
+                        })}
+                </div>
 
                 {this.state.searchHistoryLoading ? null :
                     <div className={"search-history-section"}>

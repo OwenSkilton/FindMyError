@@ -6,7 +6,15 @@ const DocumentationResultsBody = ({items, searchInformation, user}) => {
     return (
         <>
             {items.map((result) => {
-                return <RenderDocumentationSearchItem key={result.cacheId} result = {result} user={user}/>
+                return (
+                    <>
+                        <RenderDocumentationSearchItem
+                            key={result.cacheId}
+                            result = {result}
+                            user={user}
+                        />
+                    </>
+                )
             })}
         </>
     );

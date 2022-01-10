@@ -6,17 +6,18 @@
 }
 
 .results-content{
-  padding-left: 1rem;
+  padding-left: 3rem;
   display: inline;
   box-sizing: inherit;
 }
 
 .results {
   margin: 1rem auto 0;
-  padding: 1rem;
+  padding: 1rem 1rem 1rem 0.5rem;
   border: 2px solid black;
   box-sizing: inherit;
   display: flex;
+  position: relative;
 }
 
 .tags{
@@ -61,10 +62,19 @@
   margin: 0.2rem;
 }
 
-.icons{
-  width: 30px;
-  justify-content: center;
-  align-items: center;
+.icons-and-score{
+  width: 40px;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  text-align: center;
+  margin-right: 1rem;
+
+  .forum-post-rating{
+    font-weight: bold;
+    font-size: 18px;
+  }
 }
 
 .bi-star:hover, .fa-star:hover{
