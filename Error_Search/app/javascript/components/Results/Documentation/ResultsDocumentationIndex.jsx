@@ -61,9 +61,6 @@ export default class ResultsDocumentationIndex extends React.Component {
             console.log(dataJson)
             dataJson.items ? this.setState({results: [...this.state.results, dataJson]}) : null
         }
-        // https://stackoverflow.com/questions/16925762/getting-more-than-10-results-by-google-custom-search-api-v1-in-java
-        // to get more than 10 results add the start param onto URL and start from 11 or 21 or 31 etc.
-        // For loop that preforms multiple searches
     }
 
     // API HELPERS
