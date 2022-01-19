@@ -1,0 +1,128 @@
+.crawler-results-container {
+  width: 100%;
+  max-width: var(--max-width);
+  box-sizing: border-box;
+  margin: 1rem auto 1rem 1rem;
+}
+
+.crawler-search-results-body{
+  display: block;
+}
+
+.crawler-singular-result {
+  margin: 1rem auto 0;
+  padding: 1rem;
+  border: 2px solid black;
+  box-sizing: inherit;
+  display: flex;
+  position: relative;
+}
+
+.crawler-result-inner-content{
+  width: 100%;
+  padding-left: 2rem;
+  display: inline;
+  box-sizing: inherit;
+}
+
+.crawler-exclusive-content{
+  color: red;
+  font-weight: bold;
+}
+
+// Content
+
+.crawler-redhat-item-type{
+  p{
+    text-transform: capitalize;
+    opacity: 90%;
+    font-style: italic;
+  }
+  margin-bottom: 0.5rem;
+}
+
+.crawler-item-title{
+  font-weight: bold;
+  font-size: 22px;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+  padding-right: 50px;
+}
+
+// Solution
+
+.crawler-bullet-points{
+  margin-top: 1rem;
+  p{
+    font-weight: bold;
+  }
+  .crawler-list-issues{
+    margin-left: 2rem;
+    list-style-type: circle;
+    li{
+      font-style: italic;
+    }
+  }
+  .crawler-list-resolution{
+    margin-left: 2rem;
+    list-style-type: circle;
+    li{
+      font-style: italic;
+    }
+  }
+}
+
+.crawler-date-verified-solution {
+  display: flex;
+  margin-top: 1rem;
+  position: relative;
+
+  .crawler-solution-verified {
+    color: #229b22;
+    font-weight: bold;
+  }
+
+  .crawler-solution-non-verified {
+    color: dodgerblue;
+  }
+
+  .crawler-date {
+    font-style: italic;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+  }
+}
+
+// Article
+
+.crawler-article-brief{
+  padding-bottom: 1rem;
+
+  .crawler-brief-content{
+    margin-top: 0.8rem;
+  }
+}
+
+// Documentation
+
+.crawler-documentation-content{
+  .crawler-documentation-title{
+    margin-bottom: 0.8rem;
+    font-weight: bold;
+  }
+  .crawler-abstract{
+    margin-bottom: 0.3rem;
+    font-style: italic;
+  }
+}
+
+// Icons section
+
+.crawler-icons{
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: 30px;
+}

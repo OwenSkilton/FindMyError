@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'about/About'
   get 'results/ResultsPageErrorForum'
   get 'results/ResultsPageDocumentation'
+  get 'results/ResultsPageCrawler'
   get 'profile/Profile'
   get '/resultsPageArguments', to: 'search#get_params'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

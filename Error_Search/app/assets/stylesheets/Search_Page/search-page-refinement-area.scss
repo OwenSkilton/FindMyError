@@ -16,62 +16,97 @@
 
 // Search page button toggle area
 
-.search-page-toggle-search-button{
+//.search-page-toggle-search-button{
+//  padding-top: 3rem;
+//  margin: 3rem;
+//  box-sizing: border-box;
+//  position: relative;
+//  display: flex;
+//  justify-content: center;
+//  align-items: center;
+//}
+//
+//.toggle-button input{
+//  display: none;
+//}
+//.toggle-button{
+//  position: relative;
+//  display: inline-block;
+//  width: 90px;
+//  height: 30px;
+//}
+//.slider{
+//  background-color: grey;
+//  opacity: 20%;
+//  border: 1px solid #aaa;
+//  border-radius: 45px;
+//  cursor: pointer;
+//  transition: all 0.4s;
+//  position: absolute;
+//  top: 0;
+//  bottom: 0;
+//  left: 0;
+//  right: 0;
+//}
+//.slider:before{
+//  margin-left: 2px;
+//  content: "";
+//  width: 24px;
+//  height: 24px;
+//  background-color: #eee;
+//  border-radius: 50%;
+//  position: absolute;
+//  transition: all 0.4s;
+//  top: 2px;
+//  left: 2px;
+//}
+//input:checked + .slider:before{
+//  transform: translateX(54px);
+//}
+//input:checked + .slider{
+//  background-color: #357bf6;
+//  opacity: 100%;
+//}
+//
+//.toggle-button-label{
+//  margin-left: 1rem;
+//}
+
+.search-page-radio-buttons {
   padding-top: 3rem;
   margin: 3rem;
-  box-sizing: border-box;
-  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.toggle-button input{
-  display: none;
-}
-.toggle-button{
-  position: relative;
-  display: inline-block;
-  width: 90px;
-  height: 30px;
-}
-.slider{
-  background-color: grey;
-  opacity: 20%;
-  border: 1px solid #aaa;
-  border-radius: 45px;
+.individual-radio {
+  display: inline-flex;
   cursor: pointer;
-  transition: all 0.4s;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  margin: 0 1rem;
 }
-.slider:before{
-  margin-left: 2px;
-  content: "";
-  width: 24px;
-  height: 24px;
-  background-color: #eee;
-  border-radius: 50%;
-  position: absolute;
-  transition: all 0.4s;
-  top: 2px;
-  left: 2px;
+.individual-radio input {
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  background: none;
+  box-shadow: inset 0 0 0 1px #9F9F9F;
+  appearance: none;
+  pointer-events: none;
 }
-input:checked + .slider:before{
-  transform: translateX(54px);
+.individual-radio input:focus {
+  outline: none;
 }
-input:checked + .slider{
-  background-color: #357bf6;
-  opacity: 100%;
+.individual-radio input:checked {
+  box-shadow: inset 0 0 0 6px #357bf6;
 }
-
-.toggle-button-label{
-  margin-left: 1rem;
+.individual-radio span {
+  vertical-align: middle;
+  display: inline-block;
+  line-height: 20px;
+  padding: 0 0.6rem;
 }
-
 
 
 

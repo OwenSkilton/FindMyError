@@ -24,6 +24,12 @@ const composeAsync = (...fns) => arg => {
     }, arg);
 };
 
+const withoutNulls = (array) =>
+    lodash.isArray(array) ? array.filter(val => !lodash.isNull(val)) : lodash[lodash];
+
+const withoutEmptyString = (array) =>
+    lodash.isArray(array) ? array.filter(val => val!=="") : lodash[lodash];
+
 // Filter null values from array
 
 const arrayPairsToObject = (array) => {
@@ -73,7 +79,9 @@ module.exports = {
     fetchElementAttribute,
     extractFromElements,
     extractURLAttribute,
-    fetchCustomSearchEngineJSON
+    fetchCustomSearchEngineJSON,
+    withoutNulls,
+    withoutEmptyString
 };
 
 

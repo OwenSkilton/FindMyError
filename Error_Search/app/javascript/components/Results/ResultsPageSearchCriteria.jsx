@@ -20,13 +20,13 @@ const ResultsPageSearchCriteria = ({language, setLanguage, framework, setFramewo
     // EVENT HANDLER FUNCTIONS
 
      const handleSubmit = async (e) => {
-        e.preventDefault()
-         const windowLocationURL = searchParameter === "Error_Message" ? "/results/ResultsPageErrorForum" : "/results/ResultsPageDocumentation"
+         e.preventDefault()
+         const windowLocationURL = searchParameter === "Error_Message" ? "/results/ResultsPageErrorForum" : searchParameter === "Documentation" ? "/results/ResultsPageDocumentation" : "/results/ResultsPageCrawler"
          const url = `http://localhost:3000/resultsPageArguments?language=${language}&searchkeywords=${searchKeywords}&framework=${framework}&searchparameter=${searchParameter}`
-        await fetch(url).then(() => postSearchHistory())
-            .finally(setTimeout(() => {
-                window.location.assign(windowLocationURL)
-            }, 100))
+         await fetch(url).then(() => postSearchHistory())
+             .finally(setTimeout(() => {
+                 window.location.assign(windowLocationURL)
+             }, 100))
     }
 
     const ConvertAtSymbolInEmail = (userEmail) => {return userEmail.replace(/@/g, "%40")}
@@ -60,7 +60,7 @@ const ResultsPageSearchCriteria = ({language, setLanguage, framework, setFramewo
             <ol>
                 <li>
                     <h2 style={{paddingBottom: "1rem"}} className={"title"}>Refine Search:</h2>
-                    <h4 style={{opacity: "80%", paddingBottom: "2rem"}}> Searching via: <br/>{searchParameter === "Error_Message" ? "Error Messages": "Documentation"}</h4>
+                    <h4 style={{opacity: "80%", paddingBottom: "2rem"}}> Searching via: <br/>{searchParameter === "Error_Message" ? "Error Messages": searchParameter}</h4>
                     <form onSubmit={(e)=>handleSubmit(e)}>
                         <div >
                             <input

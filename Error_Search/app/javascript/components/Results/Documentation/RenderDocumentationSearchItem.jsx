@@ -51,17 +51,11 @@ const MyComponent = ({result, user}) => {
         <div className={"documentation-singular-result"}>
             <div className="documentation-icons">
                     <span>
-                        <div>
-                            <i className="bi bi-arrow-up-square"/>
-                        </div>
                         <div className={"favourite"}>
                         {showFavouritedStar ?
                             <i className="fa fa-star checked" onClick={() => deleteFavourite()}/> :
                             <i className="bi bi-star" onClick={() => postFavourite()}/>
                         }
-                        </div>
-                        <div>
-                            <i className="bi bi-arrow-down-square"/>
                         </div>
                     </span>
             </div>

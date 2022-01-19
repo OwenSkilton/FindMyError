@@ -15,4 +15,12 @@ class ResultsController < ApplicationController
     @searchparameter = session[:searchparameter]
     @user = current_user
   end
+
+  def ResultsPageCrawler
+    @searchkeywords = session[:searchkeywords]
+    @language = session[:language]
+    @framework = session[:framework]
+    @searchparameter = session[:searchparameter]
+    @user = current_user
+  end
 end
