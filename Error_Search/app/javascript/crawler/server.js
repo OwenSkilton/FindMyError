@@ -1,13 +1,16 @@
 const logger = require('morgan')
 const express = require('express')
 const cors = require('cors')
-const { sendResponse } = require('./helpers/helper');
+const {fetchGeekDetails} = require("./geekforgeek");
+const {
+    sendResponse,
+    searchEngineURLFormer,
+    findURLLinksFromCustomSearchEngine
+} = require('./helpers/helper');
 const {
     fetchSearchSolution,
     fetchSearchDocumentation,
     fetchSearchArticles,
-    searchEngineURLFormer,
-    findURLLinksFromCustomSearchEngine
 } = require("./redhat");
 
 const app = express();
@@ -35,10 +38,7 @@ app.post('/crawlerdata', (req,res,next)=>{
                 sendResponse(res)(fetchSearchArticles(req.body.url))
                 : req.body.url.indexOf("documentation") > -1 ?
                     sendResponse(res)(fetchSearchDocumentation(req.body.url)) : null
-        : null
-    // req.body.url.indexOf("redhat") > -1 ?
-    //     req.body.url.indexOf("documentation") > -1 ?
-    //         res.json({status: "Si"}) : null : null
+        : req.body.url.indexOf("geeksforgeeks") > -1 ? sendResponse(res)(fetchGeekDetails(req.body.url)) : null
 })
 
 app.listen(port, () => console.log("Listening on port: " + port))

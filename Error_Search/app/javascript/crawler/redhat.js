@@ -2,30 +2,15 @@ const lodash = require('lodash')
 
 const {
     composeAsync,
-    arrayPairsToObject,
     fetchHtmlFromUrl,
     fetchElementsInnerText,
     fetchElementAttribute,
     extractFromElements,
     extractURLAttribute,
-    fetchCustomSearchEngineJSON,
     withoutNulls,
     withoutEmptyString
 } = require("./helpers/helper.js")
 
-// *****************************************
-// |           GENERIC FUNCTIONS           |
-// *****************************************
-
-const searchEngineBase = `https://www.googleapis.com/customsearch/v1?key=AIzaSyD5YELqGoAfzwHJMCL7G8_01MPKRVCYN4g&cx=77cddc3562f67c7c0&q=`;
-
-const searchEngineURLFormer = (url) => {
-    return lodash.isString(url) ? `${searchEngineBase}${url}` : null;
-}
-
-const findURLLinksFromCustomSearchEngine = (url) =>{
-    return fetchCustomSearchEngineJSON(url).then(r => r.items.map((item)=>item.link));
-}
 
 // ******************************************
 // |         DOM SPECIFIC FUNCTIONS         |
@@ -82,7 +67,7 @@ const extractRedHatDetailsArticles = $ => {
 }
 
 // *******************************************
-// |           CONTROLLER FUNCTION           |
+// |           CONTROLLER FUNCTIONS          |
 // *******************************************
 const fetchSearchSolution = (redhatUrl) => {
     return composeAsync(extractRedHatDetailsSolution, fetchHtmlFromUrl)(redhatUrl)
@@ -98,7 +83,5 @@ module.exports = {
     fetchSearchSolution,
     fetchSearchDocumentation,
     fetchSearchArticles,
-    searchEngineURLFormer,
-    findURLLinksFromCustomSearchEngine
 };
 

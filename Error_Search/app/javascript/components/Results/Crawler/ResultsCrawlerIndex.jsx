@@ -7,6 +7,7 @@ import axios from "axios";
 import RenderRedhatSolutionItem from "./Redhat/RenderRedhatSolutionItem";
 import RenderRedhatDocumentationItem from "./Redhat/RenderRedhatDocumentationItem";
 import RenderRedhatArticleItem from "./Redhat/RenderRedhatArticleItem";
+import RenderGeekItem from "./geek/RenderGeekItem";
 
 export default class ResultsCrawlerIndex extends React.Component {
 
@@ -59,8 +60,9 @@ export default class ResultsCrawlerIndex extends React.Component {
 
     async fetchCrawlerURLs(){
         const url = this.crawlerURLFormer();
-        const data = await fetch(url)
-        return await data.json()
+        // const data = await fetch(url)
+        // return await data.json()
+        return this.state.urlsToCrawl
     }
 
     async crawlURL(url){
@@ -116,7 +118,7 @@ export default class ResultsCrawlerIndex extends React.Component {
 
     findSiteCrawled(url){
         return url.indexOf("redhat") > -1 ? "redhat"
-            :  url.indexOf("geekforgeek") > -1 ? "geekforgeek" : null
+            :  url.indexOf("geeksforgeeks") > -1 ? "geeksforgeeks" : null
     }
     findTypeOfSite(url){
         return url.indexOf("solutions") > -1 ? "solutions"
@@ -144,7 +146,14 @@ export default class ResultsCrawlerIndex extends React.Component {
                         {this.state.loading ? null :
                             this.state.crawledData.map((crawledItem)=>
                                 crawledItem.siteCrawled === "redhat" ?
-                                    this.renderRedhatItem(crawledItem, user) : null
+                                    this.renderRedhatItem(crawledItem, user)
+                                    : crawledItem.siteCrawled === "geeksforgeeks" ?
+                                     <RenderGeekItem
+                                         key={crawledItem.url}
+                                         user={user}
+                                         crawledItem={crawledItem}
+                                     />: null
+
                             )
                         }
                     </div>

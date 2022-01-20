@@ -117,6 +117,28 @@
   }
 }
 
+// Geeks for Geeks
+
+.crawler-date-author{
+  margin-bottom: 0.8rem;
+}
+
+.crawler-date-author {
+  position: relative;
+  margin-top: 1rem;
+  .crawler-date {
+    font-style: italic;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+  }
+
+  .crawler-geek-author{
+    display: flex;
+    opacity: 85%;
+  }
+}
+
 // Icons section
 
 .crawler-icons{

@@ -9,7 +9,20 @@ const {
     extractURLAttribute,
 } = require("./domparsing.js")
 
-// https://lodash.com/docs/4.17.15
+
+// *****************************************
+// |             API FUNCTIONS             |
+// *****************************************
+
+const searchEngineBase = `https://www.googleapis.com/customsearch/v1?key=AIzaSyD5YELqGoAfzwHJMCL7G8_01MPKRVCYN4g&cx=77cddc3562f67c7c0&q=`;
+
+const searchEngineURLFormer = (url) => {
+    return lodash.isString(url) ? `${searchEngineBase}${url}` : null;
+}
+
+const findURLLinksFromCustomSearchEngine = (url) =>{
+    return fetchCustomSearchEngineJSON(url).then(r => r.items.map((item)=>item.link));
+}
 
 // *****************************************
 // |           GENERIC FUNCTIONS           |
@@ -29,12 +42,6 @@ const withoutNulls = (array) =>
 
 const withoutEmptyString = (array) =>
     lodash.isArray(array) ? array.filter(val => val!=="") : lodash[lodash];
-
-// Filter null values from array
-
-const arrayPairsToObject = (array) => {
-    return array.reduce((obj, pair) => ({...obj, ...pair}), {})
-}
 
 // ********************************************
 // |           REQUEST AND RESPONSE           |
@@ -72,7 +79,6 @@ const fetchCustomSearchEngineJSON = async url => {
 
 module.exports = {
     composeAsync,
-    arrayPairsToObject,
     sendResponse,
     fetchHtmlFromUrl,
     fetchElementsInnerText,
@@ -81,7 +87,9 @@ module.exports = {
     extractURLAttribute,
     fetchCustomSearchEngineJSON,
     withoutNulls,
-    withoutEmptyString
+    withoutEmptyString,
+    searchEngineURLFormer,
+    findURLLinksFromCustomSearchEngine
 };
 
 

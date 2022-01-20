@@ -1,3 +1,5 @@
+const lodash = require('lodash')
+
 // ***********************************
 // |           DOM PARSING           |
 // ***********************************
@@ -17,10 +19,10 @@ const fetchElementAttribute = (attribute) => (element) => {
 // Extract array of values from a collection of elements using the extractor function
 // returns the array or the return value from calling transform() on the array
 
-const extractFromElements = (extractor) => (transform) => (element) => $ => {
-    const results = element.map((i, elem) => extractor($(element))).get();
-    return lodash.isFunction(transform) ? transform(results) : results
-}
+const extractFromElements = extractor => transform => elems => $ => {
+    const results = elems.map((i, element) => extractor($(element))).get();
+    return lodash.isFunction(transform) ? transform(results) : results;
+};
 
 
 const extractURLAttribute = (attr) => fetchElementAttribute(attr);
