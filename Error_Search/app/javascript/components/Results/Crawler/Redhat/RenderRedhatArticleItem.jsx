@@ -5,48 +5,56 @@ const RenderRedhatArticleItem = ({crawledItem, user}) => {
     const [response, setResponse] = useState("null")
     const [formattedUpdatedDate, setFormattedUpdatedDate] = useState(new Date(crawledItem.data.updateDate).toString().substring(0, 24))
 
-    // const ConvertAtSymbolInEmail = (userEmail) => {return userEmail.replace(/@/g, "%40")}
+    const ConvertAtSymbolInEmail = (userEmail) => {return userEmail.replace(/@/g, "%40")}
 
-    // useEffect(()=>{
-    //     setResponse(checkIfPostIsFavouriteToUser())
-    // },[])
+    useEffect(()=>{
+        setResponse(checkIfPostIsFavouriteToUser())
+    },[])
 
-    // const postFavourite = async () => {
-    //     setShowFavouritedStar(!showFavouritedStar)
-    //     const email = ConvertAtSymbolInEmail(user.email)
-    //     const url = `http://localhost:8080/backend/postdocumentationfavourite/${email}/${result.cacheId}`;
-    //     const data = await fetch(url,
-    //         {
-    //             method: 'POST',
-    //             headers: {
-    //                 'Content-Type': 'application/json'
-    //             },
-    //             body: JSON.stringify(result.link)
-    //         })
-    //     const dataJson = await data.json();
-    //     console.log(dataJson)
-    // }
-    // const deleteFavourite = async () => {
-    //     setShowFavouritedStar(!showFavouritedStar)
-    //     const email = ConvertAtSymbolInEmail(user.email)
-    //     const url = `http://localhost:8080/backend/deletedocumentationfavourite/${email}/${result.cacheId}`;
-    //     await fetch(url,
-    //         {
-    //             method: 'Delete',
-    //             headers: {
-    //                 'Content-Type': 'application/json'
-    //             },
-    //             body: JSON.stringify(result.link)
-    //         })
-    // }
-    // const checkIfPostIsFavouriteToUser = async () => {
-    //     const email = ConvertAtSymbolInEmail(user.email)
-    //     const url = `http://localhost:8080/backend/finddocumentationfavourite/${email}/${result.cacheId}`;
-    //     const data = await fetch(url)
-    //     const dataJson = await data.json();
-    //     dataJson.documentationFavouritesID ? setShowFavouritedStar(!showFavouritedStar) : null
-    //     return dataJson.documentationFavouritesID ? dataJson : null
-    // }
+    const postFavourite = async () => {
+        setShowFavouritedStar(!showFavouritedStar)
+        const email = ConvertAtSymbolInEmail(user.email)
+        const url = `http://localhost:8080/backend/postcrawleritemfavourite/${email}`;
+        const data = await fetch(url,
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(crawledItem.url)
+            })
+        const dataJson = await data.json();
+        console.log(dataJson)
+    }
+    const deleteFavourite = async () => {
+        setShowFavouritedStar(!showFavouritedStar)
+        const email = ConvertAtSymbolInEmail(user.email)
+        const url = `http://localhost:8080/backend/deletecrawleritemfavourite/${email}`;
+        await fetch(url,
+            {
+                method: 'Delete',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(crawledItem.url)
+            })
+    }
+    const checkIfPostIsFavouriteToUser = async () => {
+        const email = ConvertAtSymbolInEmail(user.email)
+        const url = `http://localhost:8080/backend/findcrawleritemfavourite/${email}`;
+        const data = await fetch(url,
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(crawledItem.url)
+            })
+        const dataJson = await data.json();
+        console.log(data)
+        dataJson.crawlerFavouritesID ? setShowFavouritedStar(!showFavouritedStar) : null
+        return dataJson.crawlerFavouritesID ? dataJson : null
+    }
 
     return (
         <div className={"crawler-singular-result"}>
@@ -54,8 +62,8 @@ const RenderRedhatArticleItem = ({crawledItem, user}) => {
                     <span>
                         <div className={"favourite"}>
                         {showFavouritedStar ?
-                            <i className="fa fa-star checked" /> :
-                            <i className="bi bi-star" />
+                            <i className="fa fa-star checked" onClick={() => deleteFavourite()}/> :
+                            <i className="bi bi-star" onClick={() => postFavourite()}/>
                         }
                         </div>
                     </span>

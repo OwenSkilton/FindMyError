@@ -18,12 +18,12 @@ const {
 
 const extractRedHatDetailsSolution = $ => {
     const mainSite = $("#cp-main");
-    // const pageTitle = fetchElementAttribute("href")(mainSite.find("#breadcrumbs").find("a")) !== "/errata" ? mainSite.find("h1.title") : mainSite.find("div.print-single").find("h1");
     const pageTitle = mainSite.find("h1.title")
     const SolutionVerified = mainSite.find("span.status")
     const subscriberExclusive = !!fetchElementsInnerText(mainSite.find("h2.section-title-red"))
     const updateDate = mainSite.find("time.moment_date")
-    const issueBulletPoints = fetchElementsInnerText(mainSite.find("section.field_kcs_issue_txt").find("ul")).split("\n")
+    const issueSection = mainSite.find("section.field_kcs_issue_txt")
+    const issueBulletPoints = fetchElementsInnerText(issueSection.find("ul")) ?  fetchElementsInnerText(issueSection.find("ul")).split("\n") : null
     const resolution = subscriberExclusive ? "" : mainSite.find("section.field_kcs_resolution_txt").find("p")
 
     return Promise.all([

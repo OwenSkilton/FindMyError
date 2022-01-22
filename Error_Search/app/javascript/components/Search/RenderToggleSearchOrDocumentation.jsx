@@ -36,8 +36,8 @@ class RenderToggleSearchOrDocumentation extends Component {
                     <input onClick={(e) => this.toggleTypeOfSearchParameterValue(e)} type="radio" id="Documentation" name="selector" tabIndex="2"/>
                         <span>Documentation</span>
                 </label>
-                <label onClick={(e) => this.toggleTypeOfSearchParameterValue(e)} className="individual-radio">
-                    <input type="radio" id="Crawler" name="selector" tabIndex="3"/>
+                <label className="individual-radio">
+                    <input onClick={(e) => this.toggleTypeOfSearchParameterValue(e)} type="radio" id="Crawler" name="selector" tabIndex="3"/>
                         <span>Crawler</span>
                 </label>
             </div>

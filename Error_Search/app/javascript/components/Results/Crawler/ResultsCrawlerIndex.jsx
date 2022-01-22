@@ -7,7 +7,7 @@ import axios from "axios";
 import RenderRedhatSolutionItem from "./Redhat/RenderRedhatSolutionItem";
 import RenderRedhatDocumentationItem from "./Redhat/RenderRedhatDocumentationItem";
 import RenderRedhatArticleItem from "./Redhat/RenderRedhatArticleItem";
-import RenderGeekItem from "./geek/RenderGeekItem";
+import RenderGeekItem from "./GeeksForGeeks/RenderGeekItem";
 
 export default class ResultsCrawlerIndex extends React.Component {
 
@@ -17,8 +17,8 @@ export default class ResultsCrawlerIndex extends React.Component {
         super(props);
         this.state={
             crawledData: [],
-            // urlsToCrawl: [] || TestDataCrawler
-            urlsToCrawl: TestURLDataCrawler,
+            urlsToCrawl: [] || TestURLDataCrawler,
+            // urlsToCrawl: TestURLDataCrawler,
             loading: true,
             searchKeywords: this.props.searchkeywords,
             language: this.props.language,
@@ -60,9 +60,9 @@ export default class ResultsCrawlerIndex extends React.Component {
 
     async fetchCrawlerURLs(){
         const url = this.crawlerURLFormer();
-        // const data = await fetch(url)
-        // return await data.json()
-        return this.state.urlsToCrawl
+        const data = await fetch(url)
+        return await data.json()
+        // return this.state.urlsToCrawl
     }
 
     async crawlURL(url){

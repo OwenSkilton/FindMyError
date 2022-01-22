@@ -3,6 +3,7 @@ import RenderForumFavourites from "./RenderForumFavourites";
 import RenderDocumentationFavourites from "./RenderDocumentationFavourites";
 import RenderProfilePage from "./RenderProfilePage";
 import RenderSearchHistory from "./RenderSearchHistory"
+import RenderCrawlerFavourites from "./RenderCrawlerFavourites";
 
 export default class ProfileHome extends Component {
     constructor(props) {
@@ -10,20 +11,24 @@ export default class ProfileHome extends Component {
         this.state = {
             forumFavouritesLoading: true,
             documentationFavouritesLoading: true,
+            crawlerFavouritesLoading: true,
             searchHistoryLoading: true,
             user: this.props.user,
             forumFavourites: "",
             documentationFavourites: "",
+            crawlerFavourites: "",
             searchHistory: ""
         }
         this.findForumFavouritedPosts = this.findForumFavouritedPosts.bind(this)
         this.findDocumentationFavouritedPosts = this.findDocumentationFavouritedPosts.bind(this)
+        this.findCrawlerFavouritesPosts = this.findCrawlerFavouritesPosts.bind(this)
         this.ConvertAtSymbolInEmail = this.ConvertAtSymbolInEmail.bind(this)
     }
 
     componentDidMount() {
         this.findForumFavouritedPosts()
         this.findDocumentationFavouritedPosts()
+        this.findCrawlerFavouritesPosts()
         this.findSearchHistory()
     }
 
@@ -46,6 +51,17 @@ export default class ProfileHome extends Component {
         this.setState({
             documentationFavouritesLoading: false,
             documentationFavourites: dataJson
+        })
+    }
+    async findCrawlerFavouritesPosts() {
+        const email = this.ConvertAtSymbolInEmail(this.state.user.email)
+        const url = `http://localhost:8080/backend/findusercrawleritemfavourites/${email}`;
+        const data = await fetch(url)
+        const dataJson = await data.json();
+        console.log(dataJson)
+        this.setState({
+            crawlerFavouritesLoading: false,
+            crawlerFavourites: dataJson
         })
     }
     async findSearchHistory() {
@@ -74,6 +90,11 @@ export default class ProfileHome extends Component {
                     {this.state.documentationFavouritesLoading ? null :
                         this.state.documentationFavourites.map((favourite)=>{
                             return <RenderDocumentationFavourites key={favourite.documentationid.documentationid} favourite={favourite}/>
+                        })}
+                    <h2>Crawler Favourites: </h2>
+                    {this.state.crawlerFavouritesLoading ? null :
+                        this.state.crawlerFavourites.map((favourite)=>{
+                            return <RenderCrawlerFavourites key={favourite.linkid.linkid} favourite={favourite}/>
                         })}
                 </div>
 

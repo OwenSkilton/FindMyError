@@ -12,10 +12,10 @@ const {
 // ******************************************
 // |         DOM SPECIFIC FUNCTIONS         |
 // ******************************************
-
+let url = ""
 const extractGeekForGeekDetails = $ => {
-    const mainSite = $("#home-page");
-    const pageTitle = mainSite.find("article.content").find("h1")
+    const mainSite = url.indexOf("tutorial") > -1 ? $("#main") : $("#home-page");
+    const pageTitle = fetchElementsInnerText(mainSite.find("h1").contents().first()) ? mainSite.find("h1") : mainSiteTutorials.find("h1.entry-title")
     const metaList = mainSite.find("div.meta").find("ul").find("li").find("span")
     const difficultyLevel = metaList.find("a")
     const author = mainSite.find("div.author .info .name").find("a")
@@ -38,6 +38,7 @@ const extractGeekForGeekDetails = $ => {
 // *******************************************
 
 const fetchGeekDetails = (geekURL) => {
+    url = geekURL
     return composeAsync(extractGeekForGeekDetails, fetchHtmlFromUrl)(geekURL)
 }
 

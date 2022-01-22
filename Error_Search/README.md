@@ -10,7 +10,7 @@
 
 * Crawler favourites???
 
-* Api search for other sights????? (GeekforGeek, redhat etc)
+* Api search for other sights (w3Schools)
 
 * Search area on results page extra search params???
 
