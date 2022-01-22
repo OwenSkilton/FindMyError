@@ -8,8 +8,6 @@
 
 * Cucumber testing
 
-* Crawler favourites???
-
 * Api search for other sights (w3Schools)
 
 * Search area on results page extra search params???
