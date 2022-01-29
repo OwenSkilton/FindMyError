@@ -17,3 +17,6 @@
 * Profile page CSS so favourited results are more readable (Perform a get to gather more info using question ID???)
 
 * Profile page search history CSS, not sure best structure just a list and time performed?
+
+
+// Previous start command package.json "start": "node app/javascript/scraper/server.js",
