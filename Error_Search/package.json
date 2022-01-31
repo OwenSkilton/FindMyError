@@ -38,7 +38,6 @@
     "webpack-dev-server": "^3"
   },
   "scripts": {
-    "start": "node app/javascript/Crawler/index.js"
-  },
-  "type": "module"
+    "start": "node app/javascript/scraper/server.js"
+  }
 }
