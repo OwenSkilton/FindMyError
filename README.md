@@ -1,28 +1,13 @@
-# To Do:
+# Error Search UI Application
 
-* Languages checkboxes that renders a framework option
+----------------------------------------
 
-* rails navigation when a search is performed to go to a new page
+* To start the UI run the rails command rails s.
 
-* Home page that enables routing
+* May need to perform a "bundle install" or "npm install"
 
-* Login page
+* Navigate to http://localhost:3000/ to access the application
 
-* Api selection set up
+* To activate web scraper use the command:  npm start
 
-* results screen with the left-hand side container selection (Amazon) and right hand side results screen
-
-* Accounts?
-
-* CSS!!!!
-
-* Cucumber testing
-
-* Upvote for posts?
-
-* results from 2 different websites
-
-* Favourited results??
-
-* CHECK SCREENSHOT ON DESKTOP FOR SETTING UP REACT ROUTES???
-    - https://www.digitalocean.com/community/tutorials/how-to-set-up-a-ruby-on-rails-project-with-a-react-frontend
+* To run the web crawler experiment, add the line: "type": "module" to the package.json file
